@@ -77,6 +77,9 @@ C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\bin\Microsoft.Owin.Security.OAuth
 C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\bin\Microsoft.Owin.Security.Google.xml
 C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\bin\Microsoft.Owin.Security.Twitter.xml
 C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.csprojResolveAssemblyReference.cache
 C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.dll
 C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.pdb
+C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.InitialCreate.resources
+C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.csproj.GenerateResource.Cache
+C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.AddedCreateRacesController.resources
+C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.AddedDataAnnotationsToCreateRaceModel.resources

@@ -26,5 +26,17 @@ namespace RaceMaker.Controllers
 
             return View();
         }
+
+        //public static ActionResult GetUrlFromChart(this HtmlHelper helper, Chart chart)
+        //{
+        //    lock (object)
+        //    {
+        //        string path = HttpContext.Current.Server.MapPath("~/App_Data/graphs/");
+        //        string filename = path + Guid.NewGuid() + ".jpg";
+        //        var image = chart.ToWebImage("jpg");
+        //        //save your image.
+        //        return File(image.GetBytes(), "image/jpeg");
+        //    }
+        //}
     }
 }

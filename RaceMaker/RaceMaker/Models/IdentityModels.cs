@@ -29,5 +29,7 @@ namespace RaceMaker.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<RaceMaker.Models.CreateRace> CreateRaces { get; set; }
     }
 }
