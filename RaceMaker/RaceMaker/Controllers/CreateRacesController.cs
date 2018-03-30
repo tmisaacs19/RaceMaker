@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace RaceMaker.Models
 {
     public class CreateRacesController : Controller
@@ -14,8 +15,20 @@ namespace RaceMaker.Models
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: CreateRaces
-        public ActionResult Index()
+        public ActionResult Index(string Email)
         {
+            CreateRace createRace = new CreateRace();
+            ExternalLoginConfirmationViewModel email = new ExternalLoginConfirmationViewModel();
+            if (createRace.AdminEmail == email.Email){
+                //logic
+            }
+                else{
+                //show all races 
+            }
+            //linq queery to database for whatever items searched for
+            //you need some action, that passes the action into the controller that
+            //indicates what we're looking for 
+
             return View(db.CreateRaces.ToList());
         }
 
@@ -45,13 +58,13 @@ namespace RaceMaker.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,RaceName,RaceLocation,RaceDate,RaceDistance,RaceCost,RaceDescription")] CreateRace createRace)
+        public ActionResult Create([Bind(Include = "ID,RaceName,RaceLocation,RaceDate,RaceDistance,RaceCost,RaceDescription,AdminEmail,AdminPassword")] CreateRace createRace)
         {
             if (ModelState.IsValid)
             {
                 db.CreateRaces.Add(createRace);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = createRace.ID });
             }
 
             return View(createRace);
@@ -122,5 +135,7 @@ namespace RaceMaker.Models
             }
             base.Dispose(disposing);
         }
+
+
     }
 }

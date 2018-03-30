@@ -34,7 +34,11 @@ namespace RaceMaker.Models
 
         [Display(Name = "Race Description")]
         public string RaceDescription { get; set; }
+        [Required]
+        [Display(Name = "Race Administrator Email")]
         public string AdminEmail { get; set; }
+        [Required]
+        [Display(Name = "Race Administrator Password")]
         public string AdminPassword { get; set; }
 
     }

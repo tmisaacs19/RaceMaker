@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201803301928173_AddedAdminEmailPasswordToCreateRaceModel.Designer.cs">
       <DependentUpon>201803301928173_AddedAdminEmailPasswordToCreateRaceModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803301933003_AddedAnnotationsToEmailandPassword.cs" />
+    <Compile Include="Migrations\201803301933003_AddedAnnotationsToEmailandPassword.Designer.cs">
+      <DependentUpon>201803301933003_AddedAnnotationsToEmailandPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateRace.cs" />
@@ -342,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803301928173_AddedAdminEmailPasswordToCreateRaceModel.resx">
       <DependentUpon>201803301928173_AddedAdminEmailPasswordToCreateRaceModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803301933003_AddedAnnotationsToEmailandPassword.resx">
+      <DependentUpon>201803301933003_AddedAnnotationsToEmailandPassword.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
