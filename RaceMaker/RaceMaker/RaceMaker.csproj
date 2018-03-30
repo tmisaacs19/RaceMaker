@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RaceSignUpsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -213,12 +214,25 @@
     <Compile Include="Migrations\201803301837116_AddedDataAnnotationsToCreateRaceModel.Designer.cs">
       <DependentUpon>201803301837116_AddedDataAnnotationsToCreateRaceModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803301900153_AddedRaceDescription.cs" />
+    <Compile Include="Migrations\201803301900153_AddedRaceDescription.Designer.cs">
+      <DependentUpon>201803301900153_AddedRaceDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803301906075_addedRaceDesccriptionDisplayName.cs" />
+    <Compile Include="Migrations\201803301906075_addedRaceDesccriptionDisplayName.Designer.cs">
+      <DependentUpon>201803301906075_addedRaceDesccriptionDisplayName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803301928173_AddedAdminEmailPasswordToCreateRaceModel.cs" />
+    <Compile Include="Migrations\201803301928173_AddedAdminEmailPasswordToCreateRaceModel.Designer.cs">
+      <DependentUpon>201803301928173_AddedAdminEmailPasswordToCreateRaceModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateRace.cs" />
-    <Compile Include="Models\CreateRacesController.cs" />
+    <Compile Include="Controllers\CreateRacesController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RaceSignUp.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -288,6 +302,16 @@
     <Content Include="Views\CreateRaces\Details.cshtml" />
     <Content Include="Views\CreateRaces\Edit.cshtml" />
     <Content Include="Views\CreateRaces\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\RaceSignUps\Create.cshtml" />
+    <Content Include="Views\RaceSignUps\Delete.cshtml" />
+    <Content Include="Views\RaceSignUps\Details.cshtml" />
+    <Content Include="Views\RaceSignUps\Edit.cshtml" />
+    <Content Include="Views\RaceSignUps\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -309,6 +333,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803301837116_AddedDataAnnotationsToCreateRaceModel.resx">
       <DependentUpon>201803301837116_AddedDataAnnotationsToCreateRaceModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803301900153_AddedRaceDescription.resx">
+      <DependentUpon>201803301900153_AddedRaceDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803301906075_addedRaceDesccriptionDisplayName.resx">
+      <DependentUpon>201803301906075_addedRaceDesccriptionDisplayName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803301928173_AddedAdminEmailPasswordToCreateRaceModel.resx">
+      <DependentUpon>201803301928173_AddedAdminEmailPasswordToCreateRaceModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

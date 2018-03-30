@@ -31,5 +31,7 @@ namespace RaceMaker.Models
         }
 
         public System.Data.Entity.DbSet<RaceMaker.Models.CreateRace> CreateRaces { get; set; }
+
+        public System.Data.Entity.DbSet<RaceMaker.Models.RaceSignUp> RaceSignUps { get; set; }
     }
 }

@@ -32,5 +32,10 @@ namespace RaceMaker.Models
         [Display(Name = "Race Fee")]
         public double RaceCost { get; set; }
 
+        [Display(Name = "Race Description")]
+        public string RaceDescription { get; set; }
+        public string AdminEmail { get; set; }
+        public string AdminPassword { get; set; }
+
     }
 }

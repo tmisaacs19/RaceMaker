@@ -83,3 +83,6 @@ C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.In
 C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.csproj.GenerateResource.Cache
 C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.AddedCreateRacesController.resources
 C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.AddedDataAnnotationsToCreateRaceModel.resources
+C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.AddedRaceDescription.resources
+C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.addedRaceDesccriptionDisplayName.resources
+C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.AddedAdminEmailPasswordToCreateRaceModel.resources
