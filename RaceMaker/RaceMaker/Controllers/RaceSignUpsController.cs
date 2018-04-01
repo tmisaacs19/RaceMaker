@@ -18,6 +18,14 @@ namespace RaceMaker.Controllers
         public ActionResult Index()
         {
             return View(db.RaceSignUps.ToList());
+            //var races = from r in db.CreateRaces
+            //            orderby r.RaceDate ascending
+            //            select r;
+            //return View(races);
+            
+
+            //where for only race director races
+
         }
 
         // GET: RaceSignUps/Details/5
@@ -124,9 +132,25 @@ namespace RaceMaker.Controllers
             base.Dispose(disposing);
         }
 
+        public ActionResult OrderByDate()
+        {
+            var races = from r in db.CreateRaces
+                        orderby r.RaceDate ascending
+                        select r;
+            return View(races);
+        }
+
         //public ActionResult SignUpForRace(int? id)
         //{
 
         //}
+
+        public ActionResult OrderByDay()
+        {
+            var races = (from c in db.CreateRaces
+                    .OrderByDescending(c => c.RaceDate)
+                         select c);
+            return View(races.ToList());
+        }
     }
 }

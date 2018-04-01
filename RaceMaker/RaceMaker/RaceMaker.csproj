@@ -316,6 +316,8 @@
     <Content Include="Views\RaceSignUps\Details.cshtml" />
     <Content Include="Views\RaceSignUps\Edit.cshtml" />
     <Content Include="Views\RaceSignUps\Index.cshtml" />
+    <Content Include="Views\RaceSignUps\OrderByDate.cshtml" />
+    <Content Include="Views\RaceSignUps\OrderByDay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -8,28 +8,40 @@ using System.Web;
 using System.Web.Mvc;
 
 
+
+
 namespace RaceMaker.Models
 {
     public class CreateRacesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        
 
         // GET: CreateRaces
-        public ActionResult Index(string Email)
+        public ActionResult Index(int? id)
         {
-            CreateRace createRace = new CreateRace();
-            ExternalLoginConfirmationViewModel email = new ExternalLoginConfirmationViewModel();
-            if (createRace.AdminEmail == email.Email){
-                //logic
-            }
-                else{
-                //show all races 
-            }
+            //how to get the email of the current logged in user
+            //how to get the email item from all listings in the Races Database
+            //CreateRace createRace = db.CreateRaces.Find(id);
+            //CreateRace createRace = new CreateRace();
+            //LoginViewModel avm = new LoginViewModel();
+            //CreateRace race = db.CreateRaces.Find(id);
+            ////var currentEmail = email;
+            //if (race.AdminEmail == avm.Email)
+            //{
+
+            //    var races = db.CreateRaces.Where(s => s.AdminEmail == avm.Email);
+            //    races.ToList();
+            //    return View(races);
+            //    //return View(db.CreateRaces.ToList());
+            //}
+            //else
+            //{
+                return View(db.CreateRaces.ToList());
+            //}
             //linq queery to database for whatever items searched for
             //you need some action, that passes the action into the controller that
-            //indicates what we're looking for 
-
-            return View(db.CreateRaces.ToList());
+            //indicates what we're looking for           
         }
 
         // GET: CreateRaces/Details/5
@@ -60,6 +72,7 @@ namespace RaceMaker.Models
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,RaceName,RaceLocation,RaceDate,RaceDistance,RaceCost,RaceDescription,AdminEmail,AdminPassword")] CreateRace createRace)
         {
+            
             if (ModelState.IsValid)
             {
                 db.CreateRaces.Add(createRace);
