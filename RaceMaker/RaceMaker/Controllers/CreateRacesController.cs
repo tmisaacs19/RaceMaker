@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 
 
@@ -20,28 +21,21 @@ namespace RaceMaker.Models
         // GET: CreateRaces
         public ActionResult Index(int? id)
         {
-            //how to get the email of the current logged in user
-            //how to get the email item from all listings in the Races Database
-            //CreateRace createRace = db.CreateRaces.Find(id);
-            //CreateRace createRace = new CreateRace();
-            //LoginViewModel avm = new LoginViewModel();
-            //CreateRace race = db.CreateRaces.Find(id);
-            ////var currentEmail = email;
-            //if (race.AdminEmail == avm.Email)
-            //{
+            string userId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
 
-            //    var races = db.CreateRaces.Where(s => s.AdminEmail == avm.Email);
-            //    races.ToList();
-            //    return View(races);
-            //    //return View(db.CreateRaces.ToList());
-            //}
-            //else
-            //{
+            CreateRace race = db.CreateRaces.Find(id);
+            if (race.AdminEmail == currentUser.Email)
+            {
+
+                var races = db.CreateRaces.Where(s => s.AdminEmail == currentUser.Email);
+                races.ToList();
+                return View(races);
+            }
+            else
+            {
                 return View(db.CreateRaces.ToList());
-            //}
-            //linq queery to database for whatever items searched for
-            //you need some action, that passes the action into the controller that
-            //indicates what we're looking for           
+            }     
         }
 
         // GET: CreateRaces/Details/5
