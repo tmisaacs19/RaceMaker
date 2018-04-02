@@ -54,10 +54,11 @@ namespace RaceMaker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID")] RaceSignUp raceSignUp)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Gender,DateOfBirth,TshirtSize")] RaceSignUp raceSignUp)
         {
             if (ModelState.IsValid)
             {
+                // take in a race id and assign it to a participant who registered for that race id
                 db.RaceSignUps.Add(raceSignUp);
                 db.SaveChanges();
                 return RedirectToAction("Index");

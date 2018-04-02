@@ -55,7 +55,7 @@
             @*@Html.ActionLink("Delete", "Delete", new { id=item.ID }) |*@
 
 
-            @Html.ActionLink("Sign Up", @*"User"*@"RedirectToSignUp", "RaceSignUps", new { id =item.ID})
+            @Html.ActionLink("Sign Up", "Create", "RaceSignUps", new { id =item.ID}, null)
         </td>
     </tr>
 }

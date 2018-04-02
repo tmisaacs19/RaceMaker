@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using RaceMaker.Models;
 
 
 
@@ -52,14 +53,12 @@ namespace RaceMaker.Models
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,RaceName,RaceLocation,RaceDate,RaceDistance,RaceCost,RaceDescription,AdminEmail,AdminPassword")] CreateRace createRace)
         {
-            
             if (ModelState.IsValid)
             {
                 db.CreateRaces.Add(createRace);
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = createRace.ID });
             }
-
             return View(createRace);
         }
 
@@ -160,8 +159,8 @@ namespace RaceMaker.Models
 
         public ActionResult RedirectToSignUp()
         {
-            return View("../RaceSignUps/Create");
+            RaceSignUp raceSignUp = new RaceSignUp();
+            return View("../RaceSignUps/Create", raceSignUp);
         }
-
     }
 }
