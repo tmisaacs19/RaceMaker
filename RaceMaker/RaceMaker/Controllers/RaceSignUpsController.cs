@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RaceMaker.Models;
+using System.Configuration;
+using Stripe;
+
 
 namespace RaceMaker.Controllers
 {
@@ -17,7 +20,10 @@ namespace RaceMaker.Controllers
         // GET: RaceSignUps
         public ActionResult Index()
         {
-            return View(db.RaceSignUps.ToList());
+            var stripePublishKey = ConfigurationManager.AppSettings["Publish Key"];
+            ViewBag.StripePublishKey = "Publish Key";
+            return View();
+            //return View(db.RaceSignUps.ToList()); uncomment this part after testing the Stripe API
             //var races = from r in db.CreateRaces
             //            orderby r.RaceDate ascending
             //            select r;
@@ -54,7 +60,7 @@ namespace RaceMaker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Gender,DateOfBirth,TshirtSize")] RaceSignUp raceSignUp)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Gender,DateOfBirth,TshirtSize,RaceID")] RaceSignUp raceSignUp)
         {
             if (ModelState.IsValid)
             {
@@ -152,6 +158,30 @@ namespace RaceMaker.Controllers
                     .OrderByDescending(c => c.RaceDate)
                          select c);
             return View(races.ToList());
+        }
+
+        public ActionResult Charge(string stripeEmail, string stripeToken)
+        {
+            var customers = new StripeCustomerService();
+            var charges = new StripeChargeService();
+
+            var customer = customers.Create(new StripeCustomerCreateOptions
+            {
+                Email = stripeEmail,
+                SourceToken = stripeToken
+            });
+
+            var charge = charges.Create(new StripeChargeCreateOptions
+            {
+                Amount = 500,//charge in cents
+                Description = "Sample Charge",
+                Currency = "usd",
+                CustomerId = customer.Id
+            });
+
+            // further application specific code goes here
+
+            return View();
         }
     }
 }

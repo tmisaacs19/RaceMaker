@@ -180,3 +180,13 @@ C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\obj\Debug\RaceMaker.dl
 C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\obj\Debug\RaceMaker.pdb
 C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.UpdatedRaceSignUpModel.resources
 C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.UpdatedRaceSignUpModelToIncludeGenderAndDateOfBirth.resources
+C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.AddedRaceIDInTheRaceSignUpModel.resources
+C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\ServiceStack.Client.dll
+C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\ServiceStack.Interfaces.dll
+C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\ServiceStack.Text.dll
+C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\Stripe.dll
+C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\Stripe.net.dll
+C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\ServiceStack.Client.xml
+C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\ServiceStack.Interfaces.xml
+C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\ServiceStack.Text.xml
+C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\Stripe.xml

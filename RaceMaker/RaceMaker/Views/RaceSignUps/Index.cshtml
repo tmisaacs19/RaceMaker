@@ -7,7 +7,20 @@
 
 <h2>Index</h2>
 
-<p>
+<form action="/Payment/Charge" method="POST">
+    <article>
+        <label>Amount: $5.00</label>
+    </article>
+    <script src="//checkout.stripe.com/v2/checkout.js"
+            class="stripe-button"
+            data-key="@ViewBag.StripePublishKey"
+            data-locale="auto"
+            data-description="Sample Charge"
+            data-amount="500">
+    </script>
+</form>
+
+@*<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -25,4 +38,4 @@
     </tr>
 }
 
-</table>
+</table> unomment this after tesing out the Stripe API*@

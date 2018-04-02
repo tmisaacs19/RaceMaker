@@ -30,5 +30,7 @@ namespace RaceMaker.Models
         [Required]
         [Display(Name = "T-Shirt Size")]
         public string TshirtSize { get; set; }
+
+        public int RaceID { get; set; }
     }
 }
