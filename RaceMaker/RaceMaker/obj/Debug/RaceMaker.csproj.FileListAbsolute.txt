@@ -178,3 +178,5 @@ C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Mi
 C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\obj\Debug\RaceMaker.csproj.GenerateResource.Cache
 C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\obj\Debug\RaceMaker.dll
 C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\obj\Debug\RaceMaker.pdb
+C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.UpdatedRaceSignUpModel.resources
+C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.UpdatedRaceSignUpModelToIncludeGenderAndDateOfBirth.resources

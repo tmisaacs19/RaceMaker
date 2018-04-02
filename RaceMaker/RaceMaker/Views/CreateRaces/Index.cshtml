@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<RaceMaker.Models.CreateRace>
 
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -54,7 +55,7 @@
             @*@Html.ActionLink("Delete", "Delete", new { id=item.ID }) |*@
 
 
-            @Html.ActionLink("Sign Up", "User", "SignUpForRace", new { id =item.ID})
+            @Html.ActionLink("Sign Up", @*"User"*@"RedirectToSignUp", "RaceSignUps", new { id =item.ID})
         </td>
     </tr>
 }

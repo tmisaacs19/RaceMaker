@@ -158,6 +158,10 @@ namespace RaceMaker.Models
             }
         }
 
+        public ActionResult RedirectToSignUp()
+        {
+            return View("../RaceSignUps/Create");
+        }
 
     }
 }
