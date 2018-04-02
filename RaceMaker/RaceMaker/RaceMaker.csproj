@@ -318,6 +318,7 @@
     <Content Include="Views\RaceSignUps\Index.cshtml" />
     <Content Include="Views\RaceSignUps\OrderByDate.cshtml" />
     <Content Include="Views\RaceSignUps\OrderByDay.cshtml" />
+    <Content Include="Views\CreateRaces\ShowMyRaces.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

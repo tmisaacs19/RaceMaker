@@ -21,21 +21,7 @@ namespace RaceMaker.Models
         // GET: CreateRaces
         public ActionResult Index(int? id)
         {
-            string userId = User.Identity.GetUserId();
-            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
-
-            CreateRace race = db.CreateRaces.Find(id);
-            if (race.AdminEmail == currentUser.Email)
-            {
-
-                var races = db.CreateRaces.Where(s => s.AdminEmail == currentUser.Email);
-                races.ToList();
-                return View(races);
-            }
-            else
-            {
-                return View(db.CreateRaces.ToList());
-            }     
+            return View(db.CreateRaces.ToList()); //shows all races  
         }
 
         // GET: CreateRaces/Details/5
@@ -141,6 +127,35 @@ namespace RaceMaker.Models
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult ShowMyRaces(int? id)
+        {
+            //this logic needs to be somewhere exclusively for RaceCreators
+            string userId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
+
+            //CreateRace race = db.CreateRaces.Find(id);
+            //CreateRace race;
+            if (currentUser.Email != null)
+            {
+
+                var races = db.CreateRaces.Where(s => s.AdminEmail == currentUser.Email);
+                races.ToList();
+                if(races == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    return View(races);
+                }
+                
+            }
+            else
+            {
+                return View(db.CreateRaces.ToList()); //shows all races 
+            }
         }
 
 

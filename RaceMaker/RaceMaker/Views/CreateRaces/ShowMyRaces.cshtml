@@ -1,0 +1,64 @@
+﻿@model IEnumerable<RaceMaker.Models.CreateRace>
+@{
+    ViewBag.Title = "ShowMyRaces";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Races</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceDistance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceCost)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RaceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RaceLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RaceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RaceDistance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RaceCost)
+            </td>
+            <td>
+
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+
+
+                @Html.ActionLink("Sign Up", "User", "SignUpForRace", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
