@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<RaceMaker.Models.CreateRace>
 
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -49,12 +50,12 @@
         </td>
         <td>
            
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |*@
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID }) |
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.ID }) |*@
 
 
-            @Html.ActionLink("Sign Up", "User", "SignUpForRace", new { id =item.ID})
+            @Html.ActionLink("Sign Up", "Create", "RaceSignUps", new { id =item.ID}, null)
         </td>
     </tr>
 }

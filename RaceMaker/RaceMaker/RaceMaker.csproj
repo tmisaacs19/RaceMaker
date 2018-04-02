@@ -230,6 +230,14 @@
     <Compile Include="Migrations\201803301933003_AddedAnnotationsToEmailandPassword.Designer.cs">
       <DependentUpon>201803301933003_AddedAnnotationsToEmailandPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804021433118_UpdatedRaceSignUpModel.cs" />
+    <Compile Include="Migrations\201804021433118_UpdatedRaceSignUpModel.Designer.cs">
+      <DependentUpon>201804021433118_UpdatedRaceSignUpModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804021536288_UpdatedRaceSignUpModelToIncludeGenderAndDateOfBirth.cs" />
+    <Compile Include="Migrations\201804021536288_UpdatedRaceSignUpModelToIncludeGenderAndDateOfBirth.Designer.cs">
+      <DependentUpon>201804021536288_UpdatedRaceSignUpModelToIncludeGenderAndDateOfBirth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateRace.cs" />
@@ -352,6 +360,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803301933003_AddedAnnotationsToEmailandPassword.resx">
       <DependentUpon>201803301933003_AddedAnnotationsToEmailandPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804021433118_UpdatedRaceSignUpModel.resx">
+      <DependentUpon>201804021433118_UpdatedRaceSignUpModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804021536288_UpdatedRaceSignUpModelToIncludeGenderAndDateOfBirth.resx">
+      <DependentUpon>201804021536288_UpdatedRaceSignUpModelToIncludeGenderAndDateOfBirth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
