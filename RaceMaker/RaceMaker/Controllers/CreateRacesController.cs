@@ -11,8 +11,6 @@ using RaceMaker.Models;
 using System.IO;
 
 
-
-
 namespace RaceMaker.Models
 {
     public class CreateRacesController : Controller
