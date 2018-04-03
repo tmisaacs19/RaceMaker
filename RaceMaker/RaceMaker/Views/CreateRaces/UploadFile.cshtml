@@ -1,0 +1,33 @@
+﻿@model RaceMaker.Models.CreateRace
+@{
+    ViewBag.Title = "UploadFile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Upload File</h2>
+
+@using (Html.BeginForm("UploadFile", "CreateRaces", "UploadFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div>
+        @Html.TextBox("file", "", new { type = "file" }) <br />
+
+        <input type="submit" value="Upload" />
+
+        @ViewBag.Message
+
+    </div>
+}
+<p>
+
+</p>
+
+@Html.ActionLink("Back to List", "Index") |
+@Html.ActionLink("Back to Race Details", "Details", new { id = Model.ID})
+
+
+
+
+ 
+  
+

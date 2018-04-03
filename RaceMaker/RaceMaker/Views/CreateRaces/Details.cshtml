@@ -54,7 +54,19 @@
     </dl>
 </div>
 <p>
+    @Html.ActionLink("Upload Race File", "UploadFile", new { id = Model.ID }) |
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index", new { id = Model.ID }) |
     @Html.ActionLink("Sign Up", "User", "SignUpForRace", new { id = Model.ID })
+</p>
+<a href="@Url.Content(Model.FilePath)">Download File</a>
+
+<p>
+    @{
+        string link = Model.FileName;
+        string path = Model.FilePath;
+        string tag = "<a href=" + path + ">" + link + "</a>";
+    }
+
+    @Html.Raw(tag)
 </p>
