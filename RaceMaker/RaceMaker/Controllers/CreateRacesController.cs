@@ -83,7 +83,7 @@ namespace RaceMaker.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,RaceName,RaceLocation,RaceDate,RaceDistance,RaceCost")] CreateRace createRace)
+        public ActionResult Edit([Bind(Include = "ID,RaceName,RaceLocation,RaceDate,RaceDistance,RaceCost,FilePath,FileName")] CreateRace createRace)
         {
             if (ModelState.IsValid)
             {
@@ -204,6 +204,34 @@ namespace RaceMaker.Models
                 ViewBag.Message = "File upload failed!!";
                 return View();
             }
+        }
+
+        public ActionResult Download()
+        {
+            string path = Server.MapPath("~/Files/");
+            DirectoryInfo dirInfo = new DirectoryInfo(path);
+            FileInfo[] files = dirInfo.GetFiles("*.*");
+
+            return View(files);
+        }
+
+        //public ActionResult DownloadFile(string filename)
+        //{
+        //    if (filename != null)
+        //    {
+        //        string fullPath = Path.Combine(Server.MapPath("~/Files/"), filename);
+        //        return File(fullPath, "Files/");
+        //    }
+        //    //else
+        //    //    return new HttpNotFoundResult; 
+        //}
+
+        public ActionResult DisplayEntries()
+        {
+            RaceSignUp raceSignUp = new RaceSignUp();
+            //for each db entry in RaceSignUps WHERE RaceID = CreateRace.ID
+            var entries = db.RaceSignUps.Where(s => s.ID == raceSignUp.RaceID);
+            return View(entries.ToList());
         }
 
 

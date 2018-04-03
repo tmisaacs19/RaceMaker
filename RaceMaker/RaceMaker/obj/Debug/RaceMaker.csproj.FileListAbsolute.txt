@@ -204,3 +204,5 @@ C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.Up
 C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.AddedRaceIDInTheRaceSignUpModel.resources
 C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.addmigrationFilePath.resources
 C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.AddedFileNameandPathModelFields.resources
+C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.AddedForeignKeyModel.resources
+C:\RaceWebsiteGroupProject\RaceMaker\RaceMaker\obj\Debug\RaceMaker.Migrations.AddedPrimaryKey.resources

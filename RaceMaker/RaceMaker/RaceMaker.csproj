@@ -272,6 +272,14 @@
     <Compile Include="Migrations\201804031355304_AddedFileNameandPathModelFields.Designer.cs">
       <DependentUpon>201804031355304_AddedFileNameandPathModelFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804031602138_AddedForeignKeyModel.cs" />
+    <Compile Include="Migrations\201804031602138_AddedForeignKeyModel.Designer.cs">
+      <DependentUpon>201804031602138_AddedForeignKeyModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804031623255_AddedPrimaryKey.cs" />
+    <Compile Include="Migrations\201804031623255_AddedPrimaryKey.Designer.cs">
+      <DependentUpon>201804031623255_AddedPrimaryKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateRace.cs" />
@@ -280,6 +288,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RaceSignUp.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserRaces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -362,6 +371,7 @@
     <Content Include="Views\RaceSignUps\OrderByDay.cshtml" />
     <Content Include="Views\CreateRaces\ShowMyRaces.cshtml" />
     <Content Include="Views\CreateRaces\UploadFile.cshtml" />
+    <Content Include="Views\CreateRaces\DisplayEntries.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -411,6 +421,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804031355304_AddedFileNameandPathModelFields.resx">
       <DependentUpon>201804031355304_AddedFileNameandPathModelFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804031602138_AddedForeignKeyModel.resx">
+      <DependentUpon>201804031602138_AddedForeignKeyModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804031623255_AddedPrimaryKey.resx">
+      <DependentUpon>201804031623255_AddedPrimaryKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
