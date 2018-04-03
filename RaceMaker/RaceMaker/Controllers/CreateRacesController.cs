@@ -224,11 +224,12 @@ namespace RaceMaker.Models
         //    //    return new HttpNotFoundResult; 
         //}
 
-        public ActionResult DisplayEntries()
+        public ActionResult DisplayEntries(int? id)
         {
-            RaceSignUp raceSignUp = new RaceSignUp();
+            CreateRace createRace = db.CreateRaces.Find(id);
+            //RaceSignUp raceSignUp = db.RaceSignUps.Find(id);
             //for each db entry in RaceSignUps WHERE RaceID = CreateRace.ID
-            var entries = db.RaceSignUps.Where(s => s.ID == raceSignUp.RaceID);
+            var entries = db.RaceSignUps.Where(s => s.RaceID == createRace.ID);
             return View(entries.ToList());
         }
 

@@ -5,33 +5,51 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Display Entries</h2>
+<h2>List Of Entries</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TshirtSize)
+        </th>
+        <th></th>
+    </tr>
 
-
-<div>
-    <dl class="dl-horizontal">
     @foreach (var item in Model)
     {
-    <dt>
-        @Html.DisplayNameFor(model => model.FirstName)
-    </dt>
-        <dd>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-        <dd>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TshirtSize)
-        </dt>
-
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TshirtSize)
+            </td>
+        </tr>
     }
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit") |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</table>
