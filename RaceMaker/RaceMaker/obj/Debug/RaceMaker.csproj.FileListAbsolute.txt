@@ -190,3 +190,5 @@ C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\ServiceStack.Clien
 C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\ServiceStack.Interfaces.xml
 C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\ServiceStack.Text.xml
 C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\Stripe.xml
+C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\System.ValueTuple.dll
+C:\Users\Edward Kim\Desktop\RaceMaker\RaceMaker\RaceMaker\bin\System.ValueTuple.xml

@@ -10,8 +10,6 @@ using Microsoft.AspNet.Identity;
 using RaceMaker.Models;
 
 
-
-
 namespace RaceMaker.Models
 {
     public class CreateRacesController : Controller
