@@ -20,8 +20,8 @@ namespace RaceMaker.Controllers
         // GET: RaceSignUps
         public ActionResult Index()
         {
-            var stripePublishKey = ConfigurationManager.AppSettings["pk_test_Hoa0Coqp2Ao1v3i1wYoo494m"];
-            ViewBag.StripePublishKey = "pk_test_Hoa0Coqp2Ao1v3i1wYoo494m";
+            var stripePublishKey = ConfigurationManager.AppSettings["Publish Key"];
+            ViewBag.StripePublishKey = "Publish Key";
             return View();
             //return View(db.RaceSignUps.ToList()); uncomment this part after testing the Stripe API
             //var races = from r in db.CreateRaces
