@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using RaceMaker.Models;
+using System.IO;
 
 
 namespace RaceMaker.Models
@@ -80,7 +81,7 @@ namespace RaceMaker.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,RaceName,RaceLocation,RaceDate,RaceDistance,RaceCost")] CreateRace createRace)
+        public ActionResult Edit([Bind(Include = "ID,RaceName,RaceLocation,RaceDate,RaceDistance,RaceCost,FilePath,FileName")] CreateRace createRace)
         {
             if (ModelState.IsValid)
             {
@@ -160,5 +161,79 @@ namespace RaceMaker.Models
             RaceSignUp raceSignUp = new RaceSignUp();
             return View("../RaceSignUps/Create", raceSignUp);
         }
+
+        //public ActionResult Upload(HttpPostedFileBase file)
+        //{
+        //    string path = Server.MapPath("~/Files/" + file.FileName);
+        //    file.SaveAs(path);
+        //    ViewBag.path = path;
+        //    return View();
+        //}
+
+        [HttpGet]
+        public ActionResult UploadFile(int? id)
+            {
+            CreateRace createRace = db.CreateRaces.Find(id);
+            //query table to find correct race based on ID
+            //pass in race object to view 
+                return View(createRace);
+            }
+        [HttpPost]
+        public ActionResult UploadFile(HttpPostedFileBase file, int? id)
+        {//possibly create binds
+            CreateRace createRace = db.CreateRaces.Find(id);
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/Files"), _FileName);
+                    createRace.FileName = _FileName;
+                    createRace.FilePath = _path;
+                    file.SaveAs(_path);
+                }
+                ViewBag.Message = "File Uploaded Successfully!!";
+
+                return View(createRace);
+            }
+            catch
+            {
+                ViewBag.Message = "File upload failed!!";
+                return View();
+            }
+        }
+
+        public ActionResult Download()
+        {
+            string path = Server.MapPath("~/Files/");
+            DirectoryInfo dirInfo = new DirectoryInfo(path);
+            FileInfo[] files = dirInfo.GetFiles("*.*");
+
+            return View(files);
+        }
+
+        //public ActionResult DownloadFile(string filename)
+        //{
+        //    if (filename != null)
+        //    {
+        //        string fullPath = Path.Combine(Server.MapPath("~/Files/"), filename);
+        //        return File(fullPath, "Files/");
+        //    }
+        //    //else
+        //    //    return new HttpNotFoundResult; 
+        //}
+
+        public ActionResult DisplayEntries(int? id)
+        {
+            CreateRace createRace = db.CreateRaces.Find(id);
+            //RaceSignUp raceSignUp = db.RaceSignUps.Find(id);
+            //for each db entry in RaceSignUps WHERE RaceID = CreateRace.ID
+            var entries = db.RaceSignUps.Where(s => s.RaceID == createRace.ID);
+            return View(entries.ToList());
+        }
+
+
+
     }
 }
