@@ -18,7 +18,7 @@ namespace RaceMaker
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            StripeConfiguration.SetApiKey(ConfigurationManager.AppSettings["sk_test_IOIq4AMrvTqJfsEPUV52Uo6s"]);
+            StripeConfiguration.SetApiKey(ConfigurationManager.AppSettings["Secret Key"]);
         }
     }
 }
