@@ -81,7 +81,7 @@ namespace RaceMaker.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,RaceName,RaceLocation,RaceDate,RaceDistance,RaceCost,FilePath,FileName")] CreateRace createRace)
+        public ActionResult Edit([Bind(Include = "ID,RaceName,RaceLocation,RaceDate,RaceDistance,RaceCost,FilePath,FileName,AdditionalInformation")] CreateRace createRace)
         {
             if (ModelState.IsValid)
             {
@@ -176,7 +176,7 @@ namespace RaceMaker.Models
             CreateRace createRace = db.CreateRaces.Find(id);
             //query table to find correct race based on ID
             //pass in race object to view 
-                return View(createRace);
+            return View(createRace);
             }
         [HttpPost]
         public ActionResult UploadFile(HttpPostedFileBase file, int? id)
@@ -191,6 +191,7 @@ namespace RaceMaker.Models
                     string _path = Path.Combine(Server.MapPath("~/Files"), _FileName);
                     createRace.FileName = _FileName;
                     createRace.FilePath = _path;
+                    db.SaveChanges();
                     file.SaveAs(_path);
                 }
                 ViewBag.Message = "File Uploaded Successfully!!";
@@ -229,8 +230,9 @@ namespace RaceMaker.Models
             CreateRace createRace = db.CreateRaces.Find(id);
             //RaceSignUp raceSignUp = db.RaceSignUps.Find(id);
             //for each db entry in RaceSignUps WHERE RaceID = CreateRace.ID
-            var entries = db.RaceSignUps.Where(s => s.RaceID == createRace.ID);
-            return View(entries.ToList());
+            var entries = db.RaceSignUps.Where(s => s.RaceID == createRace.ID).ToList();
+            //add race number logic
+            return View(entries);
         }
 
 

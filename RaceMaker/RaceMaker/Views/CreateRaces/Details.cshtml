@@ -70,5 +70,7 @@
         string tag = "<a href=" + path + ">" + link + "</a>";
     }
 
-    @Html.Raw(tag)
+    @*@Html.Raw(tag)*@
 </p>
+
+<a href="@(Url.Content("~/Files/")+ Model.FileName)">@Model.FileName</a>

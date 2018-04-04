@@ -284,6 +284,18 @@
     <Compile Include="Migrations\201804031623255_AddedPrimaryKey.Designer.cs">
       <DependentUpon>201804031623255_AddedPrimaryKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804032005218_AddedAdditionalInformationtoModel.cs" />
+    <Compile Include="Migrations\201804032005218_AddedAdditionalInformationtoModel.Designer.cs">
+      <DependentUpon>201804032005218_AddedAdditionalInformationtoModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804032011185_AddedAdditionalInformationDisplayName.cs" />
+    <Compile Include="Migrations\201804032011185_AddedAdditionalInformationDisplayName.Designer.cs">
+      <DependentUpon>201804032011185_AddedAdditionalInformationDisplayName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804041356326_RemovedRequirementOnRaceAdminPassword.cs" />
+    <Compile Include="Migrations\201804041356326_RemovedRequirementOnRaceAdminPassword.Designer.cs">
+      <DependentUpon>201804041356326_RemovedRequirementOnRaceAdminPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateRace.cs" />
@@ -297,6 +309,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-litera.css" />
+    <Content Include="Content\bootstrap-spacelab.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -376,6 +390,7 @@
     <Content Include="Views\CreateRaces\ShowMyRaces.cshtml" />
     <Content Include="Views\CreateRaces\UploadFile.cshtml" />
     <Content Include="Views\CreateRaces\DisplayEntries.cshtml" />
+    <Content Include="Views\Shared\_NavBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -431,6 +446,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804031623255_AddedPrimaryKey.resx">
       <DependentUpon>201804031623255_AddedPrimaryKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804032005218_AddedAdditionalInformationtoModel.resx">
+      <DependentUpon>201804032005218_AddedAdditionalInformationtoModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804032011185_AddedAdditionalInformationDisplayName.resx">
+      <DependentUpon>201804032011185_AddedAdditionalInformationDisplayName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804041356326_RemovedRequirementOnRaceAdminPassword.resx">
+      <DependentUpon>201804041356326_RemovedRequirementOnRaceAdminPassword.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
