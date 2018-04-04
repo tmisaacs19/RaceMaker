@@ -409,12 +409,12 @@
     <Content Include="Views\CreateRaces\ShowMyRaces.cshtml" />
     <Content Include="Views\CreateRaces\UploadFile.cshtml" />
     <Content Include="Views\CreateRaces\DisplayEntries.cshtml" />
-<<<<<<< HEAD
+
     <Content Include="Views\Shared\_NavBar.cshtml" />
-=======
+
     <Content Include="Views\RaceSignUps\Email.cshtml" />
     <Content Include="Views\CreateRaces\SendEmail.cshtml" />
->>>>>>> 66c2c70ec030c7942fe53f761389831491c4a2ca
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
