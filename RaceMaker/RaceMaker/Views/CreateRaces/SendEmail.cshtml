@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "SendEmail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Send Email</h2>
+
+@using (Html.BeginForm())
+{
+
+    <div>
+        @*@Html.TextBox("file", "", new { type = "file" }) <br />*@
+
+        <input type="submit" value="Send Email Blast" />
+
+        @ViewBag.Message
+
+    </div>
+}
+<p>
+
+</p>
+
+@Html.ActionLink("Back to List", "Index") |
+@*@Html.ActionLink("Back to Race Details", "Details", new { id = Model.ID })*@

@@ -52,9 +52,14 @@
 
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+<<<<<<< HEAD
                 @Html.ActionLink("Delete", "Delete", new { id = item.ID }) 
 
 
+=======
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.ID }) |*@
+                @Html.ActionLink("Send Email", "SendEmail", "CreateRaces", new { id = item.ID } )
+>>>>>>> 66c2c70ec030c7942fe53f761389831491c4a2ca
                 @*@Html.ActionLink("Sign Up", "User", "SignUpForRace", new { id = item.ID })*@
             </td>
         </tr>
