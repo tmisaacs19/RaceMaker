@@ -115,7 +115,7 @@ namespace RaceMaker.Models
             CreateRace createRace = db.CreateRaces.Find(id);
             db.CreateRaces.Remove(createRace);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ShowMyRaces");
         }
 
         protected override void Dispose(bool disposing)
