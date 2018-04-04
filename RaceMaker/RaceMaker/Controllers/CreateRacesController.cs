@@ -9,6 +9,10 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using RaceMaker.Models;
 using System.IO;
+using RestSharp;
+using MailKit;
+using MailKit.Net.Smtp;
+using MimeKit;
 
 
 namespace RaceMaker.Models
@@ -233,6 +237,53 @@ namespace RaceMaker.Models
             return View(entries.ToList());
         }
 
+        [HttpGet]
+        public ActionResult SendEmail(int? id)
+        {
+            //CreateRace createRace = db.CreateRaces.Find(id);
+            //query table to find correct race based on ID
+            //pass in race object to view 
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SendEmail()
+        {//possibly create binds
+            //CreateRace createRace = db.CreateRaces.Find(id);
+            try
+            {
+                // Compose a message
+                MimeMessage mail = new MimeMessage();
+                mail.From.Add(new MailboxAddress("Excited Admin", "foo@sandbox62c8e0df34d2444681f56c32138a7aaa.mailgun.org"));
+                mail.To.Add(new MailboxAddress("Excited User", "ekim10203@gmail.com"));
+                mail.Subject = "Hello";
+                mail.Body = new TextPart("plain")
+                {
+                    Text = @"Testing 2!",
+                };
+
+                // Send it!
+                using (var client = new SmtpClient())
+                {
+                    // XXX - Should this be a little different?
+                    client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+
+                    client.Connect("smtp.mailgun.org", 587, false);
+                    client.AuthenticationMechanisms.Remove("XOAUTH2");
+                    client.Authenticate("postmaster@sandbox62c8e0df34d2444681f56c32138a7aaa.mailgun.org", "272bea244d70b881f62d3111fe6da5c0-bdd08c82-5ccae067");
+
+                    client.Send(mail);
+                    client.Disconnect(true);
+                    ViewBag.Message = "Email was sent Successfully!!";
+
+                    return View();
+                }
+            }
+            catch
+            {
+                ViewBag.Message = "Email failed to send!!";
+                return View();
+            }
+        }
 
 
     }
