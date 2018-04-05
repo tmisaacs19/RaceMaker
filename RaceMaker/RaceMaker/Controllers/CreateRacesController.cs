@@ -13,6 +13,11 @@ using RestSharp;
 using MailKit;
 using MailKit.Net.Smtp;
 using MimeKit;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Configuration;
+using System.Xml;
+using System.Text;
 
 
 namespace RaceMaker.Models
@@ -43,6 +48,20 @@ namespace RaceMaker.Models
             return View(createRace);
         }
 
+        public ActionResult RunnerDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CreateRace createRace = db.CreateRaces.Find(id);
+            if (createRace == null)
+            {
+                return HttpNotFound();
+            }
+            return View(createRace);
+        }
+
         // GET: CreateRaces/Create
         public ActionResult Create()
         {
@@ -54,7 +73,7 @@ namespace RaceMaker.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,RaceName,RaceLocation,RaceDate,RaceDistance,RaceCost,RaceDescription,AdminEmail,AdminPassword")] CreateRace createRace)
+        public ActionResult Create([Bind(Include = "ID,RaceName,RaceLocation,RaceDate,RaceDistance,RaceCost,RaceDescription,AdminEmail,AdminPassword,Address,City,State,ZipCode")] CreateRace createRace)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +110,7 @@ namespace RaceMaker.Models
             {
                 db.Entry(createRace).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = createRace.ID });
             }
             return View(createRace);
         }
@@ -184,7 +203,7 @@ namespace RaceMaker.Models
             }
         [HttpPost]
         public ActionResult UploadFile(HttpPostedFileBase file, int? id)
-        {//possibly create binds
+        {
             CreateRace createRace = db.CreateRaces.Find(id);
             try
             {
@@ -218,24 +237,11 @@ namespace RaceMaker.Models
             return View(files);
         }
 
-        //public ActionResult DownloadFile(string filename)
-        //{
-        //    if (filename != null)
-        //    {
-        //        string fullPath = Path.Combine(Server.MapPath("~/Files/"), filename);
-        //        return File(fullPath, "Files/");
-        //    }
-        //    //else
-        //    //    return new HttpNotFoundResult; 
-        //}
 
         public ActionResult DisplayEntries(int? id)
         {
             CreateRace createRace = db.CreateRaces.Find(id);
-            //RaceSignUp raceSignUp = db.RaceSignUps.Find(id);
-            //for each db entry in RaceSignUps WHERE RaceID = CreateRace.ID
             var entries = db.RaceSignUps.Where(s => s.RaceID == createRace.ID).ToList();
-            //add race number logic
             return View(entries);
         }
 
@@ -287,6 +293,80 @@ namespace RaceMaker.Models
             }
         }
 
+        //protected void btnGetCoordinates_Click(object sender, EventArgs e, int? id)
+        //{
+        //    //db instance
+        //    //db find ID
+        //    CreateRace createRace = db.CreateRaces.Find(id);
 
+        //    var stringAddress = createRace.Address.ToString();
+        //    GeoCode(stringAddress, id);
+        //    //lblLattitude.Text = adrs.Latitude;
+        //    //lblLongtitude.Text = adrs.Longitude;
+        //}
+
+        //public void GeoCode(string address, int? id)
+        //{
+        //    CreateRace createRace = db.CreateRaces.Find(id);
+        //    //to Read the Stream
+        //    StreamReader sr = null;
+
+        //    //The Google Maps API Either return JSON or XML. We are using XML Here
+        //    //Saving the url of the Google API 
+        //    string url = String.Format("http://maps.googleapis.com/maps/api/geocode/xml?address=" +
+        //    createRace.Address + createRace.City + createRace.State + createRace.ZipCode + "&sensor=false");
+
+        //    //to Send the request to Web Client 
+        //    WebClient wc = new WebClient();
+        //    try
+        //    {
+        //        sr = new StreamReader(wc.OpenRead(url));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("The Error Occured" + ex.Message);
+        //    }
+
+        //    try
+        //    {
+        //        XmlTextReader xmlReader = new XmlTextReader(sr);
+        //        bool latread = false;
+        //        bool longread = false;
+
+        //        while (xmlReader.Read())
+        //        {
+        //            xmlReader.MoveToElement();
+        //            switch (xmlReader.Name)
+        //            {
+        //                case "lat":
+
+        //                    if (!latread)
+        //                    {
+        //                        xmlReader.Read();
+        //                        createRace.lat = xmlReader.Value.ToString();
+        //                        latread = true;
+
+        //                    }
+        //                    break;
+        //                case "lng":
+        //                    if (!longread)
+        //                    {
+        //                        xmlReader.Read();
+        //                        createRace.lng = xmlReader.Value.ToString();
+        //                        longread = true;
+        //                    }
+
+        //                    break;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("An Error Occured" + ex.Message);
+        //    }
+        //}
     }
+
+
 }
+

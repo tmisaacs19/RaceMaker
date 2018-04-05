@@ -313,6 +313,22 @@
     <Compile Include="Migrations\201804041356326_RemovedRequirementOnRaceAdminPassword.Designer.cs">
       <DependentUpon>201804041356326_RemovedRequirementOnRaceAdminPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804041924593_AddedAddressForGoogleMaps.cs" />
+    <Compile Include="Migrations\201804041924593_AddedAddressForGoogleMaps.Designer.cs">
+      <DependentUpon>201804041924593_AddedAddressForGoogleMaps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804042043038_ChangedLatLongToStrings.cs" />
+    <Compile Include="Migrations\201804042043038_ChangedLatLongToStrings.Designer.cs">
+      <DependentUpon>201804042043038_ChangedLatLongToStrings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804042101480_RemovedLatLong.cs" />
+    <Compile Include="Migrations\201804042101480_RemovedLatLong.Designer.cs">
+      <DependentUpon>201804042101480_RemovedLatLong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804042102354_AddedLatLongAsStrings.cs" />
+    <Compile Include="Migrations\201804042102354_AddedLatLongAsStrings.Designer.cs">
+      <DependentUpon>201804042102354_AddedLatLongAsStrings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateRace.cs" />
@@ -401,7 +417,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\RaceSignUps\Create.cshtml" />
     <Content Include="Views\RaceSignUps\Delete.cshtml" />
-    <Content Include="Views\RaceSignUps\Details.cshtml" />
+    <Content Include="Views\CreateRaces\RunnerDetails.cshtml" />
     <Content Include="Views\RaceSignUps\Edit.cshtml" />
     <Content Include="Views\RaceSignUps\Index.cshtml" />
     <Content Include="Views\RaceSignUps\OrderByDate.cshtml" />
@@ -409,12 +425,11 @@
     <Content Include="Views\CreateRaces\ShowMyRaces.cshtml" />
     <Content Include="Views\CreateRaces\UploadFile.cshtml" />
     <Content Include="Views\CreateRaces\DisplayEntries.cshtml" />
-
     <Content Include="Views\Shared\_NavBar.cshtml" />
-
     <Content Include="Views\RaceSignUps\Email.cshtml" />
     <Content Include="Views\CreateRaces\SendEmail.cshtml" />
-
+    <Content Include="Views\RaceSignUps\ConfirmRegistration.cshtml" />
+    <Content Include="Views\RaceSignUps\PaymentConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -479,6 +494,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804041356326_RemovedRequirementOnRaceAdminPassword.resx">
       <DependentUpon>201804041356326_RemovedRequirementOnRaceAdminPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804041924593_AddedAddressForGoogleMaps.resx">
+      <DependentUpon>201804041924593_AddedAddressForGoogleMaps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804042043038_ChangedLatLongToStrings.resx">
+      <DependentUpon>201804042043038_ChangedLatLongToStrings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804042101480_RemovedLatLong.resx">
+      <DependentUpon>201804042101480_RemovedLatLong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804042102354_AddedLatLongAsStrings.resx">
+      <DependentUpon>201804042102354_AddedLatLongAsStrings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

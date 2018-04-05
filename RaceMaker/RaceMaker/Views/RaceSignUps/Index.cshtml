@@ -1,41 +1,64 @@
-﻿@model IEnumerable<RaceMaker.Models.RaceSignUp>
+﻿@model IEnumerable<RaceMaker.Models.CreateRace>
+
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Upcoming Events</h2>
 
-<form action="/Payment/Charge" method="POST">
-    <article>
-        <label>Amount: $5.00</label>
-    </article>
-    <script src="//checkout.stripe.com/v2/checkout.js"
-            class="stripe-button"
-            data-key="@ViewBag.StripePublishKey"
-            data-locale="auto"
-            data-description="Sample Charge"
-            data-amount="500">
-    </script>
-</form>
-
-@*<p>
+<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceDistance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceCost)
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RaceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RaceLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RaceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RaceDistance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RaceCost)
+            </td>
+            <td>
 
-</table> unomment this after tesing out the Stripe API*@
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |*@
+                @Html.ActionLink("Details", "RunnerDetails", "CreateRaces", new { id = item.ID }, null) |
+                @*@Html.ActionLink("Delete", "Delete", new { id=item.ID }) |*@
+
+
+                @Html.ActionLink("Sign Up", "Create", "RaceSignUps", new { RaceID = item.ID }, null)
+            </td>
+        </tr>
+    }
+
+</table>

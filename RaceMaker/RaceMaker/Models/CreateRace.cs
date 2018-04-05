@@ -26,7 +26,7 @@ namespace RaceMaker.Models
 
         [Required]
         [Display(Name = "Race Distance")]
-        public int RaceDistance { get; set;}
+        public int RaceDistance { get; set; }
 
         [Required]
         [Display(Name = "Race Fee")]
@@ -37,13 +37,19 @@ namespace RaceMaker.Models
         [Required]
         [Display(Name = "Race Administrator Email")]
         public string AdminEmail { get; set; }
-        
+
         [Display(Name = "Race Administrator Password")]
         public string AdminPassword { get; set; }
         public string FilePath { get; set; }
         public string FileName { get; set; }
         [Display(Name = "Additional Information")]
         public string AdditionalInformation { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public int ZipCode { get; set; }
+        public string lat { get; set; }
+        public string lng { get; set; }
 
     }
 }

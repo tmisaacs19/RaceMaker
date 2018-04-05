@@ -1,0 +1,165 @@
+﻿@model RaceMaker.Models.CreateRace
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Html.DisplayFor(model => model.RaceName)</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaceLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaceDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceDistance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaceDistance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaceCost)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Upload Race File", "UploadFile", new { id = Model.ID }) |*@
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |*@
+    @Html.ActionLink("Back to List", "Index", new { id = Model.ID }) |
+    @*@Html.ActionLink("Display Entries", "DisplayEntries", new { id = Model.ID }) |*@
+    @Html.ActionLink("Sign Up", "Create", "RaceSignUps", new { RaceID = Model.ID }, null)
+    @*@Html.ActionLink("GetMap", "GeoCode", new { id = Model.ID })*@
+</p>
+
+
+<p>
+    @{
+        string link = Model.FileName;
+        string path = Model.FilePath;
+        string tag = "<a href=" + path + ">" + link + "</a>";
+    }
+
+    @*@Html.Raw(tag)*@
+</p>
+
+<a href="@(Url.Content("~/Files/")+ Model.FileName)">@Model.FileName</a>
+
+@*<style>
+        /* Always set the map height explicitly to define the size of the div
+          * element that contains the map. */
+        #map {
+            height: 400px;
+            width: 400px;
+        }
+        /* Optional: Makes the sample page fill the window. */
+    </style>*@
+
+@*<div class="row">
+    <div id="map"></div>
+    <script>
+        var map;
+        var address = "Milwaukee, WI";
+          function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: address,
+
+              zoom: 8
+            });
+          }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUuekNsUOEs9hozBj9fL18uCiXqusrjog&callback=initMap"
+            async defer></script>
+
+    </div>*@
+
+<style>
+    /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+
+    #floating-panel {
+        /*position: absolute;*/
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+    }
+</style>
+<div class="row">
+    <div id="map"></div>
+    <div id="floating-panel">
+        <input id="address" type="textbox" value="Milwaukee, WI">
+        <input id="submit" type="button" value="Show Location">
+    </div>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: { lat: 43.038902, lng: -87.906471 }
+            });
+            var geocoder = new google.maps.Geocoder();
+
+            document.getElementById('submit').addEventListener('click', function () {
+                geocodeAddress(geocoder, map);
+            });
+        }
+        function geocodeAddress(geocoder, resultsMap) {
+            var address = document.getElementById('address').value;
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status === 'OK') {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUuekNsUOEs9hozBj9fL18uCiXqusrjog&callback=initMap">
+    </script>
+</div>

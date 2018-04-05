@@ -2,12 +2,16 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron" align="center">
-    <h1>RaceMaker</h1>
-    <p class="lead">A Place for Building and Registering for Races!!!</p>
-    <p><a href="http://localhost:57851/Account/Register" class="btn btn-primary btn-lg">Register &raquo;</a></p> 
-    <img src="@Url.Content("~/Files/runner.jpg")" alt="" />
+<div class="jumbotron" align="center" , style="background-image: url(../Files/runner.jpg)">
+    <br />
+    
 </div>
+<div class="jumbotron" align="center">
+    <h1 @*style="color: orangered">*@ >RaceMaker</h1>
+    <p @*style="color: orangered",*@ class="lead">A Place for Building and Registering for Races!!!</p>
+    <p><a href="http://localhost:57851/Account/Register" class="btn btn-primary btn-lg">Register &raquo;</a></p> 
+</div>
+
 
 <div class="row" align="center">
     <div class="col-md-6">
@@ -20,6 +24,6 @@
     <div class="col-md-6">
         <h2>Search For Races</h2>
         <p>Click Here To Search For A Race</p>
-        <p><a class="btn btn-default" href="http://localhost:57851/CreateRaces/Index">Search &raquo;</a></p>
+        <p><a class="btn btn-default" href="http://localhost:57851/RaceSignUps/Index">Search &raquo;</a></p>
     </div>
 </div>

@@ -17,8 +17,13 @@ namespace RaceMaker.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: RaceSignUps
         public ActionResult Index()
+        {
+            return View(db.CreateRaces.ToList());
+        }
+
+        // GET: RaceSignUps
+        public ActionResult PaymentConfirmation()
         {
             var stripePublishKey = ConfigurationManager.AppSettings["Publish Key"];
             ViewBag.StripePublishKey = "Publish Key";
@@ -67,7 +72,7 @@ namespace RaceMaker.Controllers
                 // take in a race id and assign it to a participant who registered for that race id
                 db.RaceSignUps.Add(raceSignUp);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("PaymentConfirmation");
             }
 
             return View(raceSignUp);
@@ -181,6 +186,11 @@ namespace RaceMaker.Controllers
 
             // further application specific code goes here
 
+            return View();
+        }
+
+        public ActionResult ConfirmRegistration()
+        {
             return View();
         }
     }
