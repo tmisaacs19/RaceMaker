@@ -329,6 +329,14 @@
     <Compile Include="Migrations\201804042102354_AddedLatLongAsStrings.Designer.cs">
       <DependentUpon>201804042102354_AddedLatLongAsStrings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804051659072_RemovedGoogleMapsCreateModelInfo.cs" />
+    <Compile Include="Migrations\201804051659072_RemovedGoogleMapsCreateModelInfo.Designer.cs">
+      <DependentUpon>201804051659072_RemovedGoogleMapsCreateModelInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804051702245_RemovedCreateBindFields.cs" />
+    <Compile Include="Migrations\201804051702245_RemovedCreateBindFields.Designer.cs">
+      <DependentUpon>201804051702245_RemovedCreateBindFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateRace.cs" />
@@ -506,6 +514,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804042102354_AddedLatLongAsStrings.resx">
       <DependentUpon>201804042102354_AddedLatLongAsStrings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804051659072_RemovedGoogleMapsCreateModelInfo.resx">
+      <DependentUpon>201804051659072_RemovedGoogleMapsCreateModelInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804051702245_RemovedCreateBindFields.resx">
+      <DependentUpon>201804051702245_RemovedCreateBindFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

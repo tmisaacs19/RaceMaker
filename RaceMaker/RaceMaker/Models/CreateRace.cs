@@ -44,12 +44,7 @@ namespace RaceMaker.Models
         public string FileName { get; set; }
         [Display(Name = "Additional Information")]
         public string AdditionalInformation { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public int ZipCode { get; set; }
-        public string lat { get; set; }
-        public string lng { get; set; }
+
 
     }
 }
