@@ -1,0 +1,36 @@
+﻿@model RaceMaker.Models.RaceSignUp
+
+@{
+    ViewBag.Title = "UploadFile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Upload CSV Entries</h2>
+
+    @using (Html.BeginForm("UploadCSV", "RaceSignUps", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type="file" name="File" id="File" />
+
+        <input type="submit" name="Submit" value="Upload" />
+
+        <span>@ViewBag.Message</span>
+    }
+
+    @*{
+
+        <div>
+            @Html.TextBox("CSV", "", new { type = "file" }) <br />
+            
+
+                <input type="submit" value="Upload" />
+
+                @ViewBag.Message
+
+            </div>
+    }
+    <p>
+
+    </p>
+
+    Html.ActionLink("Back to List", "Index") |
+        @Html.ActionLink("Back to Race Details", "Details", new { id = Model.ID })*@

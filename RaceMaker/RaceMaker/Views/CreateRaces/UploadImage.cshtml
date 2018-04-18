@@ -1,0 +1,36 @@
+﻿@model RaceMaker.Models.CreateRace
+@{
+    ViewBag.Title = "UploadFile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid body-content" align='center'>
+    <h2>Upload Image</h2>
+
+    @using (Html.BeginForm("UploadImage", "CreateRaces", "UploadFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <div>
+            @Html.TextBox("file", "", new { type = "file" }) <br />
+
+            <input type="submit" value="Upload" />
+
+            @ViewBag.Message
+
+        </div>
+    }
+    </div>
+    <p>
+
+    </p>
+    <div class="container-fluid body-content" align='center'>
+        <img src="~/Images/@Model.ImageName" />
+    </div>
+
+
+    @*<div class="jumbotron" align="right" , style="background-image: url(../Images/runnerGraphic.jpg)">*@
+
+    <div class="container-fluid body-content" align='center'>
+        @Html.ActionLink("Back to List", "Index") |
+        @Html.ActionLink("Back to Race Details", "Details", new { id = Model.ID })
+    </div>

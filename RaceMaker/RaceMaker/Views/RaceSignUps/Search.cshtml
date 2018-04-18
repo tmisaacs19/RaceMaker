@@ -1,0 +1,88 @@
+﻿@model IEnumerable<RaceMaker.Models.CreateRace>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid body-content" align='center'>
+    <h2>Upcoming Events</h2>
+
+    <p>
+        @*@Html.ActionLink("Create New", "Create")*@
+        @using (Html.BeginForm("Search", "RaceSignUps", FormMethod.Get))
+        //View then Controller
+        {
+
+            <b>Search By:</b>
+            @Html.RadioButton("searchBy", "RaceName", true) <text>Race Name</text>
+            @Html.RadioButton("searchBy", "RaceLocation") <text>Race Location</text>
+            @Html.RadioButton("searchBy", "RaceDate") <text>Race Date</text>
+            @Html.RadioButton("searchBy", "RaceDistance") <text>Race Distance</text>
+            @Html.RadioButton("searchBy", "RaceCost") <text>Race Fee</text>
+
+            @Html.TextBox("search") <input type="submit" value="Search" />
+            
+        }
+    </p>
+    @*<form asp-controller="RaceSignUps" asp-action="Index">
+            <p>
+                Race Name: <input type="text" name="SearchString">
+                <input type="submit" value="Filter" />
+            </p>
+        </form>*@
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RaceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RaceLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RaceDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RaceDistance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RaceCost)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RaceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RaceLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RaceDate)
+                    @*@item.startDate.Value.ToShortDateString()*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RaceDistance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RaceCost)
+                </td>
+                <td>
+
+                    @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |*@
+                    @Html.ActionLink("Details", "RunnerDetails", "CreateRaces", new { id = item.ID }, null) |
+                    @*@Html.ActionLink("Delete", "Delete", new { id=item.ID }) |*@
+                    @Html.ActionLink("Sign Up", "Create", "RaceSignUps", new { id = item.ID }, null) |
+                    @Html.ActionLink("Upload CSV", "UploadCSV", "RaceSignUps", new { id = item.ID }, null)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

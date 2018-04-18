@@ -48,6 +48,10 @@
       <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EPPlus, Version=4.5.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.1\lib\net40\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MailKit, Version=2.0.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
       <HintPath>..\packages\MailKit.2.0.2\lib\net45\MailKit.dll</HintPath>
       <Private>True</Private>
@@ -93,6 +97,7 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="RestSharp, Version=106.2.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.2.1\lib\net452\RestSharp.dll</HintPath>
       <Private>True</Private>
@@ -240,8 +245,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IActionResult.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\RaceSignUpsController.cs" />
+    <Compile Include="..\..\..\Capstone\RaceMaker\RaceMaker\Controllers\RaceSignUpsController.cs">
+      <Link>Controllers\RaceSignUpsController.cs</Link>
+    </Compile>
+    <Compile Include="Controllers\SendEmailWithAttachmentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -337,13 +346,160 @@
     <Compile Include="Migrations\201804051702245_RemovedCreateBindFields.Designer.cs">
       <DependentUpon>201804051702245_RemovedCreateBindFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804091505441_AddedFKFeaturesToCreateRaceandRaceSignUpClasses.cs" />
+    <Compile Include="Migrations\201804091505441_AddedFKFeaturesToCreateRaceandRaceSignUpClasses.Designer.cs">
+      <DependentUpon>201804091505441_AddedFKFeaturesToCreateRaceandRaceSignUpClasses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804092120109_RemovedVirtualCollectionsFromCRandRSUModels.cs" />
+    <Compile Include="Migrations\201804092120109_RemovedVirtualCollectionsFromCRandRSUModels.Designer.cs">
+      <DependentUpon>201804092120109_RemovedVirtualCollectionsFromCRandRSUModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804092123366_AddedJunctionTableModel.cs" />
+    <Compile Include="Migrations\201804092123366_AddedJunctionTableModel.Designer.cs">
+      <DependentUpon>201804092123366_AddedJunctionTableModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804100025350_UpdatedJunctionTableModelwithKeyandRequired.cs" />
+    <Compile Include="Migrations\201804100025350_UpdatedJunctionTableModelwithKeyandRequired.Designer.cs">
+      <DependentUpon>201804100025350_UpdatedJunctionTableModelwithKeyandRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804100107418_RemovedModelforJT.cs" />
+    <Compile Include="Migrations\201804100107418_RemovedModelforJT.Designer.cs">
+      <DependentUpon>201804100107418_RemovedModelforJT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804100108538_AddedIcollectionsToModels.cs" />
+    <Compile Include="Migrations\201804100108538_AddedIcollectionsToModels.Designer.cs">
+      <DependentUpon>201804100108538_AddedIcollectionsToModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804101457194_AddedDummyDataToJT.cs" />
+    <Compile Include="Migrations\201804101457194_AddedDummyDataToJT.Designer.cs">
+      <DependentUpon>201804101457194_AddedDummyDataToJT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804101459072_AddedDummyDataToJT1.cs" />
+    <Compile Include="Migrations\201804101459072_AddedDummyDataToJT1.Designer.cs">
+      <DependentUpon>201804101459072_AddedDummyDataToJT1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804101547237_AddedHashSets.cs" />
+    <Compile Include="Migrations\201804101547237_AddedHashSets.Designer.cs">
+      <DependentUpon>201804101547237_AddedHashSets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804101850339_AddedFKAttributesToIcollections.cs" />
+    <Compile Include="Migrations\201804101850339_AddedFKAttributesToIcollections.Designer.cs">
+      <DependentUpon>201804101850339_AddedFKAttributesToIcollections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804111215539_AddedParticipantEmailToRaceSignUps.cs" />
+    <Compile Include="Migrations\201804111215539_AddedParticipantEmailToRaceSignUps.Designer.cs">
+      <DependentUpon>201804111215539_AddedParticipantEmailToRaceSignUps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804111413441_AddedImagePathFieldToCRModel.cs" />
+    <Compile Include="Migrations\201804111413441_AddedImagePathFieldToCRModel.Designer.cs">
+      <DependentUpon>201804111413441_AddedImagePathFieldToCRModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804111414565_AddedImageNameFieldToCreateRaceModel.cs" />
+    <Compile Include="Migrations\201804111414565_AddedImageNameFieldToCreateRaceModel.Designer.cs">
+      <DependentUpon>201804111414565_AddedImageNameFieldToCreateRaceModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804112040287_AddedDisplayFormatToRaceDate.cs" />
+    <Compile Include="Migrations\201804112040287_AddedDisplayFormatToRaceDate.Designer.cs">
+      <DependentUpon>201804112040287_AddedDisplayFormatToRaceDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804112042289_RemovedANDTIMEFromRaceDate.cs" />
+    <Compile Include="Migrations\201804112042289_RemovedANDTIMEFromRaceDate.Designer.cs">
+      <DependentUpon>201804112042289_RemovedANDTIMEFromRaceDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804121751082_AddedSendEmailWithAttachmentModelAndDataFields.cs" />
+    <Compile Include="Migrations\201804121751082_AddedSendEmailWithAttachmentModelAndDataFields.Designer.cs">
+      <DependentUpon>201804121751082_AddedSendEmailWithAttachmentModelAndDataFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804131516440_AddedCenterLatLongToCRModel.cs" />
+    <Compile Include="Migrations\201804131516440_AddedCenterLatLongToCRModel.Designer.cs">
+      <DependentUpon>201804131516440_AddedCenterLatLongToCRModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161242008_AddedCourseLatAndLngToCRModel.cs" />
+    <Compile Include="Migrations\201804161242008_AddedCourseLatAndLngToCRModel.Designer.cs">
+      <DependentUpon>201804161242008_AddedCourseLatAndLngToCRModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161252045_AddedCourseRacePointsArrayToCRModel.cs" />
+    <Compile Include="Migrations\201804161252045_AddedCourseRacePointsArrayToCRModel.Designer.cs">
+      <DependentUpon>201804161252045_AddedCourseRacePointsArrayToCRModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161446200_RemovedRaceCoursePointsList.cs" />
+    <Compile Include="Migrations\201804161446200_RemovedRaceCoursePointsList.Designer.cs">
+      <DependentUpon>201804161446200_RemovedRaceCoursePointsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161447288_AddedIListCourseRacePointsArrayToCRModel.cs" />
+    <Compile Include="Migrations\201804161447288_AddedIListCourseRacePointsArrayToCRModel.Designer.cs">
+      <DependentUpon>201804161447288_AddedIListCourseRacePointsArrayToCRModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161505582_RemovedIListRaceCoursePointsArrayToCreateRaceModel.cs" />
+    <Compile Include="Migrations\201804161505582_RemovedIListRaceCoursePointsArrayToCreateRaceModel.Designer.cs">
+      <DependentUpon>201804161505582_RemovedIListRaceCoursePointsArrayToCreateRaceModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161507029_AddedCourseRacePointsArrayToCRModel1.cs" />
+    <Compile Include="Migrations\201804161507029_AddedCourseRacePointsArrayToCRModel1.Designer.cs">
+      <DependentUpon>201804161507029_AddedCourseRacePointsArrayToCRModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161515487_AddedNewListofRacePointsToCRModel.cs" />
+    <Compile Include="Migrations\201804161515487_AddedNewListofRacePointsToCRModel.Designer.cs">
+      <DependentUpon>201804161515487_AddedNewListofRacePointsToCRModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161520125_RemovedRaceCoursePointsArray.cs" />
+    <Compile Include="Migrations\201804161520125_RemovedRaceCoursePointsArray.Designer.cs">
+      <DependentUpon>201804161520125_RemovedRaceCoursePointsArray.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161522005_AddedCouseRacePointArrayToCR.cs" />
+    <Compile Include="Migrations\201804161522005_AddedCouseRacePointArrayToCR.Designer.cs">
+      <DependentUpon>201804161522005_AddedCouseRacePointArrayToCR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161530292_RCPArrayToCRModel.cs" />
+    <Compile Include="Migrations\201804161530292_RCPArrayToCRModel.Designer.cs">
+      <DependentUpon>201804161530292_RCPArrayToCRModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161929464_AddedRCPModel.cs" />
+    <Compile Include="Migrations\201804161929464_AddedRCPModel.Designer.cs">
+      <DependentUpon>201804161929464_AddedRCPModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161931099_AddedRCPPropertyToCreateRaceModel.cs" />
+    <Compile Include="Migrations\201804161931099_AddedRCPPropertyToCreateRaceModel.Designer.cs">
+      <DependentUpon>201804161931099_AddedRCPPropertyToCreateRaceModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161941154_AddedKeyToRCPModel.cs" />
+    <Compile Include="Migrations\201804161941154_AddedKeyToRCPModel.Designer.cs">
+      <DependentUpon>201804161941154_AddedKeyToRCPModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161943149_AddedLatLongToRCPModel.cs" />
+    <Compile Include="Migrations\201804161943149_AddedLatLongToRCPModel.Designer.cs">
+      <DependentUpon>201804161943149_AddedLatLongToRCPModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804162006105_RemovedRCPCollectionFromCreateRaceModel.cs" />
+    <Compile Include="Migrations\201804162006105_RemovedRCPCollectionFromCreateRaceModel.Designer.cs">
+      <DependentUpon>201804162006105_RemovedRCPCollectionFromCreateRaceModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804162013122_AddedDBContextForRPTable.cs" />
+    <Compile Include="Migrations\201804162013122_AddedDBContextForRPTable.Designer.cs">
+      <DependentUpon>201804162013122_AddedDBContextForRPTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804181316350_AddedOriginLatLngDestinationLatLngToCRModel.cs" />
+    <Compile Include="Migrations\201804181316350_AddedOriginLatLngDestinationLatLngToCRModel.Designer.cs">
+      <DependentUpon>201804181316350_AddedOriginLatLngDestinationLatLngToCRModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804181439400_AddedRaceCoursePointListToCRModel.cs" />
+    <Compile Include="Migrations\201804181439400_AddedRaceCoursePointListToCRModel.Designer.cs">
+      <DependentUpon>201804181439400_AddedRaceCoursePointListToCRModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateRace.cs" />
     <Compile Include="Controllers\CreateRacesController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\RaceSignUp.cs" />
+    <Compile Include="..\..\..\Capstone\RaceMaker\RaceMaker\Models\RaceCoursePoint.cs">
+      <Link>Models\RaceCoursePoint.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Capstone\RaceMaker\RaceMaker\Models\RaceSignUp.cs">
+      <Link>Models\RaceSignUp.cs</Link>
+    </Compile>
+    <Compile Include="Models\RaceSignUpCreateRace.cs" />
+    <Compile Include="Models\SendEmailWithAttachment.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRaces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -351,6 +507,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-darkly.css" />
+    <Content Include="Content\bootstrap-flatly.css" />
     <Content Include="Content\bootstrap-litera.css" />
     <Content Include="Content\bootstrap-spacelab.css" />
     <Content Include="Content\bootstrap-superhero.css" />
@@ -415,7 +572,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\CreateRaces\Create.cshtml" />
     <Content Include="Views\CreateRaces\Delete.cshtml" />
-    <Content Include="Views\CreateRaces\Details.cshtml" />
     <Content Include="Views\CreateRaces\Edit.cshtml" />
     <Content Include="Views\CreateRaces\Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
@@ -425,9 +581,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\RaceSignUps\Create.cshtml" />
     <Content Include="Views\RaceSignUps\Delete.cshtml" />
-    <Content Include="Views\CreateRaces\RunnerDetails.cshtml" />
     <Content Include="Views\RaceSignUps\Edit.cshtml" />
-    <Content Include="Views\RaceSignUps\Index.cshtml" />
     <Content Include="Views\RaceSignUps\OrderByDate.cshtml" />
     <Content Include="Views\RaceSignUps\OrderByDay.cshtml" />
     <Content Include="Views\CreateRaces\ShowMyRaces.cshtml" />
@@ -438,10 +592,26 @@
     <Content Include="Views\CreateRaces\SendEmail.cshtml" />
     <Content Include="Views\RaceSignUps\ConfirmRegistration.cshtml" />
     <Content Include="Views\RaceSignUps\PaymentConfirmation.cshtml" />
+    <Content Include="Views\RaceSignUps\Charge.cshtml" />
+    <Content Include="Views\CreateRaces\ExportDataFromDatabase.cshtml" />
+    <Content Include="Views\RaceSignUps\ShowMyRacesRunning.cshtml" />
+    <Content Include="Views\CreateRaces\UploadImage.cshtml" />
+    <Content Include="Views\RaceSignUps\UploadCSV.cshtml" />
+    <Content Include="Views\RaceSignUps\Search.cshtml" />
+    <Content Include="Views\RaceSignUps\SendEmail.cshtml" />
+    <Content Include="Views\SendEmailWithAttachments\Index.cshtml" />
+    <Content Include="Views\CreateRaces\Details.cshtml" />
+    <Content Include="Views\CreateRaces\RunnerDetails.cshtml" />
+    <Content Include="..\..\..\Capstone\RaceMaker\RaceMaker\Views\RaceSignUps\Index.cshtml">
+      <Link>Views\RaceSignUps\Index.cshtml</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="CSV%27s\" />
     <Folder Include="Files\" />
+    <Folder Include="Images\" />
+    <Folder Include="Views\EmailWithAttachment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -520,6 +690,111 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804051702245_RemovedCreateBindFields.resx">
       <DependentUpon>201804051702245_RemovedCreateBindFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804091505441_AddedFKFeaturesToCreateRaceandRaceSignUpClasses.resx">
+      <DependentUpon>201804091505441_AddedFKFeaturesToCreateRaceandRaceSignUpClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804092120109_RemovedVirtualCollectionsFromCRandRSUModels.resx">
+      <DependentUpon>201804092120109_RemovedVirtualCollectionsFromCRandRSUModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804092123366_AddedJunctionTableModel.resx">
+      <DependentUpon>201804092123366_AddedJunctionTableModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804100025350_UpdatedJunctionTableModelwithKeyandRequired.resx">
+      <DependentUpon>201804100025350_UpdatedJunctionTableModelwithKeyandRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804100107418_RemovedModelforJT.resx">
+      <DependentUpon>201804100107418_RemovedModelforJT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804100108538_AddedIcollectionsToModels.resx">
+      <DependentUpon>201804100108538_AddedIcollectionsToModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804101457194_AddedDummyDataToJT.resx">
+      <DependentUpon>201804101457194_AddedDummyDataToJT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804101459072_AddedDummyDataToJT1.resx">
+      <DependentUpon>201804101459072_AddedDummyDataToJT1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804101547237_AddedHashSets.resx">
+      <DependentUpon>201804101547237_AddedHashSets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804101850339_AddedFKAttributesToIcollections.resx">
+      <DependentUpon>201804101850339_AddedFKAttributesToIcollections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804111215539_AddedParticipantEmailToRaceSignUps.resx">
+      <DependentUpon>201804111215539_AddedParticipantEmailToRaceSignUps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804111413441_AddedImagePathFieldToCRModel.resx">
+      <DependentUpon>201804111413441_AddedImagePathFieldToCRModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804111414565_AddedImageNameFieldToCreateRaceModel.resx">
+      <DependentUpon>201804111414565_AddedImageNameFieldToCreateRaceModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804112040287_AddedDisplayFormatToRaceDate.resx">
+      <DependentUpon>201804112040287_AddedDisplayFormatToRaceDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804112042289_RemovedANDTIMEFromRaceDate.resx">
+      <DependentUpon>201804112042289_RemovedANDTIMEFromRaceDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121751082_AddedSendEmailWithAttachmentModelAndDataFields.resx">
+      <DependentUpon>201804121751082_AddedSendEmailWithAttachmentModelAndDataFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804131516440_AddedCenterLatLongToCRModel.resx">
+      <DependentUpon>201804131516440_AddedCenterLatLongToCRModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161242008_AddedCourseLatAndLngToCRModel.resx">
+      <DependentUpon>201804161242008_AddedCourseLatAndLngToCRModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161252045_AddedCourseRacePointsArrayToCRModel.resx">
+      <DependentUpon>201804161252045_AddedCourseRacePointsArrayToCRModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161446200_RemovedRaceCoursePointsList.resx">
+      <DependentUpon>201804161446200_RemovedRaceCoursePointsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161447288_AddedIListCourseRacePointsArrayToCRModel.resx">
+      <DependentUpon>201804161447288_AddedIListCourseRacePointsArrayToCRModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161505582_RemovedIListRaceCoursePointsArrayToCreateRaceModel.resx">
+      <DependentUpon>201804161505582_RemovedIListRaceCoursePointsArrayToCreateRaceModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161507029_AddedCourseRacePointsArrayToCRModel1.resx">
+      <DependentUpon>201804161507029_AddedCourseRacePointsArrayToCRModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161515487_AddedNewListofRacePointsToCRModel.resx">
+      <DependentUpon>201804161515487_AddedNewListofRacePointsToCRModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161520125_RemovedRaceCoursePointsArray.resx">
+      <DependentUpon>201804161520125_RemovedRaceCoursePointsArray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161522005_AddedCouseRacePointArrayToCR.resx">
+      <DependentUpon>201804161522005_AddedCouseRacePointArrayToCR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161530292_RCPArrayToCRModel.resx">
+      <DependentUpon>201804161530292_RCPArrayToCRModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161929464_AddedRCPModel.resx">
+      <DependentUpon>201804161929464_AddedRCPModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161931099_AddedRCPPropertyToCreateRaceModel.resx">
+      <DependentUpon>201804161931099_AddedRCPPropertyToCreateRaceModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161941154_AddedKeyToRCPModel.resx">
+      <DependentUpon>201804161941154_AddedKeyToRCPModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161943149_AddedLatLongToRCPModel.resx">
+      <DependentUpon>201804161943149_AddedLatLongToRCPModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804162006105_RemovedRCPCollectionFromCreateRaceModel.resx">
+      <DependentUpon>201804162006105_RemovedRCPCollectionFromCreateRaceModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804162013122_AddedDBContextForRPTable.resx">
+      <DependentUpon>201804162013122_AddedDBContextForRPTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804181316350_AddedOriginLatLngDestinationLatLngToCRModel.resx">
+      <DependentUpon>201804181316350_AddedOriginLatLngDestinationLatLngToCRModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804181439400_AddedRaceCoursePointListToCRModel.resx">
+      <DependentUpon>201804181439400_AddedRaceCoursePointListToCRModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
