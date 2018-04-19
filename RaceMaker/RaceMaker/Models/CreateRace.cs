@@ -62,6 +62,7 @@ namespace RaceMaker.Models
         public virtual ICollection<RaceSignUp> RaceSignUps { get; set; } = new HashSet<RaceSignUp>();
 
         public List<RaceCoursePoint> RaceCoursePoints { get; set; }
+        public List<string> waypoints { get; set; }
 
         //[ForeignKey("RacePointNumber")]
         /*public virtual ICollection<RaceCoursePoint> RaceCoursePoint { get; set; }*/ //= new HashSet<RaceCoursePoint>();

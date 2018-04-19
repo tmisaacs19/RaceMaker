@@ -4,11 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>My Races</h2>
+<div align="center"><h2>My Races</h2></div>
 
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p align="center">
+    @Html.ActionLink("Create A New Event", "Create")
 </p>
 <table class="table">
     <tr>
@@ -43,10 +43,10 @@
                 @Html.DisplayFor(modelItem => item.RaceDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RaceDistance)
+                @Html.DisplayFor(modelItem => item.RaceDistance) miles
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RaceCost)
+                $@Html.DisplayFor(modelItem => item.RaceCost)
             </td>
             <td>
 

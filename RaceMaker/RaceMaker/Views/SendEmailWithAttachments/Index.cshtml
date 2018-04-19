@@ -11,43 +11,40 @@
     });
 </script>
 
-<h2>Index</h2>
-<legend>Send Email </legend>
+<div align="center" style="padding-bottom: 30px"><h2>Email Race Director</h2></div>
 
-
+<div style='float:right;'>
+    <img src="~/Images/runnerGraphic.jpg" alt="RaceImage" />
+</div>
 
 
    @using (@Html.BeginForm("Index", "SendEmailWithAttachments", FormMethod.Post, new { @id = "form1", @enctype = "multipart/form-data" }))
     {
-        @Html.ValidationSummary() <input type="submit" value="Send" />
-    
+        
 
-
-
-    <table>
+    <table align="center">
         <tbody>
             <tr>
-                <td>To:</td>
-                <td>@Html.TextBoxFor(m => m.To)</td>
+                <td><h4>To:</h4></td>
+                <td style="padding-bottom: 10px">@Html.TextAreaFor(m => m.To, new { rows = "2", cols = "40" })</td>
             </tr>
-            <tr>
-                <td>
 
-                </td>
+            <tr>
+                <td><h4>Subject:</h4></td>
+                <td style="padding-bottom: 10px">@Html.TextAreaFor(m => m.Subject, new { rows = "2", cols = "40" })</td>
             </tr>
             <tr>
-                <td>Subject:</td>
-                <td>@Html.TextBoxFor(m => m.Subject)</td>
+                <td><h4>Body:</h4></td>
+                <td style="padding-bottom: 10px">@Html.TextAreaFor(m => m.Body, new { rows = "15", cols = "40" })</td>  
             </tr>
             <tr>
-                <td>Attachment</td>
-                <td><input name="fileUploader" type="file" /></td>
-            </tr>
-            <tr>
-                <td>Body:</td>
-                <td>@Html.TextAreaFor(m => m.Body)</td>
+                <td style="padding-right: 100px"><h4>Attachment</h4></td>
+                <td style="padding-bottom: 10px"><input name="fileUploader" type="file" /></td>
             </tr>
         </tbody>
     </table>
-    }
+
+    <div align="left" style="padding-left: 300px">@Html.ValidationSummary() <input type="submit" align="center" value="Send" /></div>
+
+   }
 

@@ -5,19 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Html.DisplayFor(model => model.RaceName)</h2>
+<div align="center"><h2>@Html.DisplayFor(model => model.RaceName)</h2></div>
 
-<div>
+<div align="center">
 
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.RaceName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RaceName)
-        </dd>
+    <dl class="dl-horizontal" align="center">
 
         <dt>
             @Html.DisplayNameFor(model => model.RaceLocation)
@@ -52,7 +45,7 @@
         </dd>
 
     </dl>
-</div>
+</divalign="center">
 <p>
     @*@Html.ActionLink("Upload Race File", "UploadFile", new { id = Model.ID }) |*@
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |*@
@@ -61,6 +54,39 @@
     @Html.ActionLink("Sign Up", "Create", "RaceSignUps", new { RaceID = Model.ID }, null)
     @*@Html.ActionLink("GetMap", "GeoCode", new { id = Model.ID })*@
 </p>
+
+<script type="text/javascript">
+
+    var myLatArray = [];
+    var myLngArray = [];
+
+    @foreach (var d in Model.RaceCoursePoints)
+    {
+        @:myLatArray.push("@d.Latitude");
+        @:myLngArray.push("@d.Longitude");
+    }
+
+    alert(myLatArray);
+    alert(myLngArray);
+</script>
+
+
+@*<script>     
+    var pointsTest = [];
+    (var point in Model.RaceCoursePoints)
+    {
+        test(point);
+       //  pointsTest.push(point.Latitude, point.Longitude);
+    }
+    function test(pointC) {
+        console.log("sup");
+    }
+
+    console.log('pointsTest', pointsTest);
+    @*function getPoint(i) {
+        return { location : new google.maps.LatLng(@Model.RaceCoursePoints[i].Latitude, @Model.RaceCoursePoints[i].Longitude)};
+    }*@       
+@*</script>*@
 
 
 <p>
@@ -238,19 +264,32 @@
         }*@
 
 
-          var origin = new google.maps.LatLng(@Model.RaceCoursePoints[0].Latitude, @Model.RaceCoursePoints[0].Longitude); 
+          var origin = new google.maps.LatLng(@Model.RaceCoursePoints[0].Latitude, @Model.RaceCoursePoints[0].Longitude);
           var destination = new google.maps.LatLng(@Model.RaceCoursePoints[Model.RaceCoursePoints.Count - 1].Latitude, @Model.RaceCoursePoints[Model.RaceCoursePoints.Count - 1].Longitude);
-          @*waypoints = [{location: new google.maps.LatLng(@Model.RaceCoursePoints[1].Latitude, @Model.RaceCoursePoints[1].Longitude)}];*@
-          waypoints = []
 
-          @{int i = 1;}
+          waypoints = new Array();
 
-          for( i = 1; i<@Model.RaceCoursePoints.Count -2; i++){
+          for(i = 1; i < myLatArray.length -2; i++){
               waypoints.push({
-                  location: new google.maps.LatLng(@Model.RaceCoursePoints[i].Latitude, @Model.RaceCoursePoints[i].Longitude),
+                  location: new google.maps.LatLng(myLatArray[i], myLngArray[i]),
               });
           }
 
+          @*{@i = 1;}
+          for(let i = 1; i<@Model.RaceCoursePoints.Count -1; i++){
+              waypoints.push({
+                  location: new google.maps.LatLng(@Model.RaceCoursePoints[i].Latitude, @Model.RaceCoursePoints[i].Longitude),
+              });*@
+
+              @*console.log("JS I", i);
+              console.log("CSharp I", @i);*@
+                  //can I seperate the loop from the push method
+                  //design so it isn't writing over itself
+                  //or its pushing the same point multiple times
+                  //and destination isn't defined
+                  //currently pushes the item at 1 index mutliple times
+          //}
+          //foreach()
 
               @*waypoints.push({
                   location: new google.maps.LatLng(@Model.RaceCoursePoints[1].Latitude, @Model.RaceCoursePoints[1].Longitude),
@@ -259,36 +298,14 @@
 
           displayRoute(origin, destination, directionsService,
             directionsDisplay);
-          @*var waypoint1 = new google.maps.LatLng(@Model.RaceCoursePoints[1].Latitude, @Model.RaceCoursePoints[1].Longitude)
-          var waypoint2 = new google.maps.LatLng(@Model.RaceCoursePoints[2].Latitude, @Model.RaceCoursePoints[2].Longitude)*@
       }
-            //$(document).ready(displayRoute(origin, destination, service, display))
 
-            function displayRoute(origin, destination, service, display) {
-                //var waypointsArray = new Array();
-                //for (var i=0; i<Model.RaceCoursePoints.Count; i++) {
-                //    var waypoint = new google.maps.LatLng(Model.RaceCoursePoints[i].Latitude, Model.RaceCoursePoints[i].Longitude);
-                //    waypointsArray.push(waypoint);
-                //}
-                //server vs client side issues
-
-                //for each raceCoursePoint, need to put into a new googlemap LatLng
-
-                var waypoint1 = new google.maps.LatLng(@Model.RaceCoursePoints[1].Latitude, @Model.RaceCoursePoints[1].Longitude);
-                //waypoints = []
-
-                @*@for (var i=0; i<@Model.RaceCoursePoints.Count; i++) {
-                    var holder = @Model.RaceCoursePoints;*@
-
-                    @*waypoints.push({
-                        location: new google.maps.LatLng(holder[i].Latitude, holder[i].Longitude),
-                        }
-                    });*@
+      function displayRoute(origin, destination, service, display) {
+                @*var waypoint1 = new google.maps.LatLng(@Model.RaceCoursePoints[1].Latitude, @Model.RaceCoursePoints[1].Longitude);*@
 
         service.route({
           origin: origin,
           destination: destination,
-          //waypoints: [{location: waypoint1}],
           waypoints : waypoints,
           travelMode: 'WALKING',
           avoidTolls: true
@@ -359,5 +376,30 @@
             });
         }
     </script>
+        @*<script>
+            function GetRacePointsAsArray() {
+                alert("Called Get RacePointsArray Function")
+                alert(@Model.ID)
+                debugger;
+                var id = @Model.ID;
+                $.ajax({
+                    type: "get",
+                    url: '@Url.Action("GetRaceCoursePoints", "CreateRaces" )',
+                    data: ({id: id}),
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        debugger;
+                        alert(result)
+                    },
+                    error: function (response) {
+                        debugger;
+                        alert('error');
+                    }
+                });
+
+            }
+        </script>*@
+
 
     </html>

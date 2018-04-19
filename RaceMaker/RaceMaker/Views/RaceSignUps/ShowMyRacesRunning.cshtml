@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>My Upcoming Races</h2>
+<div align="center"><h2>My Upcoming Races</h2></div>
 
 <div>
     <hr />
@@ -43,10 +43,10 @@
                         @Html.DisplayFor(modelItem => item.RaceDate)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.RaceDistance)
+                        @Html.DisplayFor(modelItem => item.RaceDistance) miles
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.RaceCost)
+                        $@Html.DisplayFor(modelItem => item.RaceCost)
                     </td>
                     <td>
 
