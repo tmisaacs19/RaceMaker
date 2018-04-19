@@ -45,7 +45,7 @@
         </dd>
 
     </dl>
-</divalign="center">
+</div>
 <p>
     @*@Html.ActionLink("Upload Race File", "UploadFile", new { id = Model.ID }) |*@
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |*@
@@ -69,26 +69,6 @@
     alert(myLatArray);
     alert(myLngArray);
 </script>
-
-
-@*<script>     
-    var pointsTest = [];
-    (var point in Model.RaceCoursePoints)
-    {
-        test(point);
-       //  pointsTest.push(point.Latitude, point.Longitude);
-    }
-    function test(pointC) {
-        console.log("sup");
-    }
-
-    console.log('pointsTest', pointsTest);
-    @*function getPoint(i) {
-        return { location : new google.maps.LatLng(@Model.RaceCoursePoints[i].Latitude, @Model.RaceCoursePoints[i].Longitude)};
-    }*@       
-@*</script>*@
-
-
 <p>
     @{
         string link = Model.FileName;
@@ -96,7 +76,6 @@
         string tag = "<a href=" + path + ">" + link + "</a>";
     }
 
-    @*@Html.Raw(tag)*@
 </p>
 
 <a href="@(Url.Content("~/Files/") + Model.FileName)">@Model.FileName</a>

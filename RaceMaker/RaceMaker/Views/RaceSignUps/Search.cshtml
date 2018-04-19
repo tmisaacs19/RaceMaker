@@ -14,7 +14,7 @@
         @using (Html.BeginForm("Search", "RaceSignUps", FormMethod.Get))
         //View then Controller
         {
-
+            @Html.TextBox("search") <input type="submit" value="Search" />
             <b>Search By:</b>
             @Html.RadioButton("searchBy", "RaceName", true) <text>Race Name</text>
             @Html.RadioButton("searchBy", "RaceLocation") <text>Race Location</text>
@@ -22,7 +22,7 @@
             @Html.RadioButton("searchBy", "RaceDistance") <text>Race Distance</text>
             @Html.RadioButton("searchBy", "RaceCost") <text>Race Fee</text>
 
-            @Html.TextBox("search") <input type="submit" value="Search" />
+            
             
         }
     </p>
@@ -67,10 +67,10 @@
                     @*@item.startDate.Value.ToShortDateString()*@
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.RaceDistance)
+                    @Html.DisplayFor(modelItem => item.RaceDistance) miles
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.RaceCost)
+                    $@Html.DisplayFor(modelItem => item.RaceCost)
                 </td>
                 <td>
 

@@ -1,6 +1,4 @@
-﻿
-
-@model IEnumerable<RaceMaker.Models.CreateRace>
+﻿@model IEnumerable<RaceMaker.Models.CreateRace>
 
 
 @{
@@ -66,10 +64,10 @@
                     @*@item.startDate.Value.ToShortDateString()*@
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.RaceDistance)
+                    @Html.DisplayFor(modelItem => item.RaceDistance) miles
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.RaceCost)
+                    $@Html.DisplayFor(modelItem => item.RaceCost)
                 </td>
                 <td>
 

@@ -602,9 +602,7 @@
     <Content Include="Views\SendEmailWithAttachments\Index.cshtml" />
     <Content Include="Views\CreateRaces\Details.cshtml" />
     <Content Include="Views\CreateRaces\RunnerDetails.cshtml" />
-    <Content Include="..\..\..\Capstone\RaceMaker\RaceMaker\Views\RaceSignUps\Index.cshtml">
-      <Link>Views\RaceSignUps\Index.cshtml</Link>
-    </Content>
+    <Content Include="Views\RaceSignUps\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

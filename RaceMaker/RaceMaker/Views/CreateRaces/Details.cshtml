@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
 
-        <div class="container-fluid body-content" align='center'>
+        <div style='float:left;'>
             <dt>
                 @Html.DisplayNameFor(model => model.RaceLocation)
             </dt>
@@ -167,6 +167,20 @@
             </script>
         </body>
         </html>*@
+<script type="text/javascript">
+
+    function setPointsArray(lat, lng) {
+        var myLatArray = [];
+        var myLngArray = [];
+
+        myLatArray.push(lat);
+        myLngArray.push(lng);
+
+        alert(myLatArray);
+        alert(myLngArray);
+    }
+</script>
+
 <html>
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -207,71 +221,84 @@ function updateMarkerLng(latLng) {
 function updateMarkerAddress(str) {
   document.getElementById('address').innerHTML = str;
 }
-  function initialize() {
-      var latLng = new google.maps.LatLng(43.0389,87.9065);
-      var map = new google.maps.Map(document.getElementById('mapCanvas'), {
-          zoom: 4,
-          center: { lat: 43.0389, lng: 87.9065 },
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-      });
-      var pointNumber = 0;
-  google.maps.event.addListener(map, "rightclick", function(event) {
-        placeMarker(event.latLng);
+
+function initialize() {
+    var latLng = new google.maps.LatLng(43.0389, 87.9065);
+    var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+        zoom: 1,
+        center: { lat: 43.038902, lng: 87.906471 },
+        mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-  function placeMarker(location) {
-      var newmarker = new google.maps.Marker({
-          position: location,
-          map: map,
-          draggable: true,
-      });
-      var lat = newmarker.position.lat();
-      var lng = newmarker.position.lng();
-      var testNumber = 12;
-      pointNumber = pointNumber + 1;
-      var form =
-              '<div id="bodyContent">' +
-              '<b>New Map</b>' +
-              '<form action="">' +
-              '<table>' +
-              /*'<tr><td>Name place :<input type="text" name="name" value="' + testNumber + '"/></td></tr>' +*/
-              '<tr><td>Latitude :<input type="text" name="latitude" value="' + lat + '"/></td></tr>' +
-              '<tr><td>Longitude: <input type="text" name="longitude" value="' + lng + '"/></td></tr>' +
-              '<tr><td><button type = "button" value="Save Course Point" onClick="saveCoordinates(' + @Model.ID + ',' + lat + ',' + lng + ')"  ></td></tr>' +      //saves a form for the current marker
-              '</table>' +
-              '</form>' +
-              '</div>';
-      var infowindow = new google.maps.InfoWindow({
-          content: form,
-          maxWidth: 500
-      });
-      google.maps.event.addListener(newmarker, 'click', function () {
-          infowindow.open(map, newmarker);
-          //marker1.openInfoWindowHtml('Some text', {noCloseOnClick: 'false'});
-          //var point = marker.getPosition();
-      });
-      // Update current position info.
-      updateMarkerPosition(latLng);
-      updateMarkerLat(latLng);
-      updateMarkerLng(latLng);
-      geocodePosition(latLng);
-      // Add dragging event listeners.
-      google.maps.event.addListener(newmarker, 'dragstart', function () {
-          updateMarkerAddress('Dragging...');
-      });
-      google.maps.event.addListener(newmarker, 'drag', function () {
-          updateMarkerStatus('Dragging...');
-          updateMarkerPosition(newmarker.getPosition());
-          updateMarkerLat(newmarker.getPosition());
-          updateMarkerLng(newmarker.getPosition());
-      });
-      google.maps.event.addListener(newmarker, 'dragend', function () {
-          updateMarkerStatus('Drag ended');
-          geocodePosition(newmarker.getPosition());
-          updateMarkerLat(newmarker.getPosition());
-          updateMarkerLng(newmarker.getPosition());
-      });
-  }
+    var pointNumber = 0;
+
+
+    google.maps.event.addListener(map, "rightclick", function (event) {
+        placeMarker(event.latLng);
+
+    });
+    function placeMarker(location) {
+        var newmarker = new google.maps.Marker({
+            position: location,
+            map: map,
+            draggable: true,
+        });
+        var lat = newmarker.position.lat();
+        var lng = newmarker.position.lng();
+        
+        pointNumber = pointNumber + 1;
+        var form =
+                '<div id="bodyContent">' +
+                '<b>New Map</b>' +
+                '<form action="">' +
+                '<table>' +
+                /*'<tr><td>Name place :<input type="text" name="name" value="' + testNumber + '"/></td></tr>' +*/
+                '<tr><td>Latitude :<input type="text" name="latitude" value="' + lat + '"/></td></tr>' +
+                '<tr><td>Longitude: <input type="text" name="longitude" value="' + lng + '"/></td></tr>' +
+                '<tr><td><button type = "button" value="Save Course Point" onClick="pointSetUp(' + @Model.ID + ',' + lat + ',' + lng + ')"  ></td></tr>' +      //saves a form for the current marker
+                '</table>' +
+                '</form>' +
+                '</div>';
+        var infowindow = new google.maps.InfoWindow({
+            content: form,
+            maxWidth: 500
+        });
+        google.maps.event.addListener(newmarker, 'click', function () {
+            infowindow.open(map, newmarker);
+            //marker1.openInfoWindowHtml('Some text', {noCloseOnClick: 'false'});
+            //var point = marker.getPosition();
+        });
+        // Update current position info.
+        updateMarkerPosition(latLng);
+        updateMarkerLat(latLng);
+        updateMarkerLng(latLng);
+        geocodePosition(latLng);
+        // Add dragging event listeners.
+        google.maps.event.addListener(newmarker, 'dragstart', function () {
+            updateMarkerAddress('Dragging...');
+        });
+        google.maps.event.addListener(newmarker, 'drag', function () {
+            updateMarkerStatus('Dragging...');
+            updateMarkerPosition(newmarker.getPosition());
+            updateMarkerLat(newmarker.getPosition());
+            updateMarkerLng(newmarker.getPosition());
+        });
+        google.maps.event.addListener(newmarker, 'dragend', function () {
+            updateMarkerStatus('Drag ended');
+            geocodePosition(newmarker.getPosition());
+            updateMarkerLat(newmarker.getPosition());
+            updateMarkerLng(newmarker.getPosition());
+        });
+
+    }
+
 }
+        function pointSetUp(id, lat, lng) {
+            saveCoordinates(id, lat, lng);
+            setPointsArray(lat, lng);
+        }
+ 
+
+
 google.maps.event.addDomListener(window, 'load', initialize);
     </script>
     <script>
