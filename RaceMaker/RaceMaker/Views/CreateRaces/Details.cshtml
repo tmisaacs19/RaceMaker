@@ -168,10 +168,15 @@
         </body>
         </html>*@
 <script type="text/javascript">
+    var myLatArray = [];
+    var myLngArray = [];
+    var path = [{ lat: 37.772, lng: -122.214 },
+          { lat: 21.291, lng: -157.821 },
+          { lat: -18.142, lng: 178.431 },
+          { lat: -27.467, lng: 153.027 }];
+    
 
     function setPointsArray(lat, lng) {
-        var myLatArray = [];
-        var myLngArray = [];
 
         myLatArray.push(lat);
         myLngArray.push(lng);
@@ -231,10 +236,23 @@ function initialize() {
     });
     var pointNumber = 0;
 
+    var polyline = new google.maps.Polyline({
+        map: map,
+        path: path,
+        strokeColor: '#0000FF',
+        strokeOpacity: 0.7,
+        strokeWeight: 1
+    });
+    polyline.setPath(map);
+    //polyline.getPath(map);
+    //var path = polyline.getPath().getArray();
+
 
     google.maps.event.addListener(map, "rightclick", function (event) {
         placeMarker(event.latLng);
-
+        var path = polyline.getPath(path);
+        path.push(event.latLng);
+        polyline.setPath(path);
     });
     function placeMarker(location) {
         var newmarker = new google.maps.Marker({
@@ -242,9 +260,15 @@ function initialize() {
             map: map,
             draggable: true,
         });
+
+        
+        
+        //path.push(latLng);
         var lat = newmarker.position.lat();
         var lng = newmarker.position.lng();
+
         
+
         pointNumber = pointNumber + 1;
         var form =
                 '<div id="bodyContent">' +
@@ -267,6 +291,9 @@ function initialize() {
             //marker1.openInfoWindowHtml('Some text', {noCloseOnClick: 'false'});
             //var point = marker.getPosition();
         });
+
+        
+
         // Update current position info.
         updateMarkerPosition(latLng);
         updateMarkerLat(latLng);
@@ -290,14 +317,67 @@ function initialize() {
         });
 
     }
-
 }
-        function pointSetUp(id, lat, lng) {
-            saveCoordinates(id, lat, lng);
-            setPointsArray(lat, lng);
-        }
- 
+    //this ends init function
+    function pointSetUp(id, lat, lng) {
+        saveCoordinates(id, lat, lng);
+        setPointsArray(lat, lng);
+        
+        //path.push(new google.maps.LatLng(evt.latLng.lat(), evt.latLng.lng()));
+        setRoute()
+    }
+    function setRoute() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer({
+            draggable: true,
+            map: 'mapCanvas',
+            panel: document.getElementById('right-panel')
+        });
 
+        var origin = new google.maps.LatLng(myLatArray[0], myLngArray[0]);
+        var destination = new google.maps.LatLng(myLatArray[myLatArray.length - 1], myLngArray[myLngArray.length - 1]);
+
+        waypoints = new Array();
+
+        for (i = 1; i < myLatArray.length - 2; i++) {
+            waypoints.push({
+                location: new google.maps.LatLng(myLatArray[i], myLngArray[i]),
+            });
+        }
+
+        displayRoute(origin, destination, directionsService,
+              directionsDisplay);
+
+
+        function displayRoute(origin, destination, service, display) {
+            @*var waypoint1 = new google.maps.LatLng(@Model.RaceCoursePoints[1].Latitude, @Model.RaceCoursePoints[1].Longitude);*@
+
+            service.route({
+                origin: origin,
+                destination: destination,
+                waypoints: waypoints,
+                travelMode: 'WALKING',
+                avoidTolls: true
+            }, function (response, status) {
+                if (status === 'OK') {
+                    display.setDirections(response);
+                } else {
+                    alert('Could not display directions due to: ' + status);
+                }
+            });
+        }
+
+    }
+
+        function computeTotalDistance(result) {
+            var total = 0;
+            var myroute = result.routes[0];
+            for (var i = 0; i < myroute.legs.length; i++) {
+                total += myroute.legs[i].distance.value;
+            }
+            total = total / 1000;
+            document.getElementById('total').innerHTML = total + ' km';
+        }
 
 google.maps.event.addDomListener(window, 'load', initialize);
     </script>
