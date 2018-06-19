@@ -345,16 +345,24 @@ namespace RaceMaker.Models
             DataTable dtNew = new DataTable();
             SqlDataAdapter Adp = new SqlDataAdapter("select * from RaceSignUps", Con);
             Adp.Fill(dtNew);
-            CreateRace createRace = new CreateRace();
+            //CreateRace createRace = new CreateRace();
+            CreateRace createRace = db.CreateRaces.Find(id);
+            //get raceName using passed in RaceID
+
+            string fileName = "~/Files/" + createRace.RaceName + ".csv";
+
 
             if(dtNew.Rows.Count > 0)
             {
                 
-                string filePath = Server.MapPath("~/Files/ExcelExport" + createRace.RaceName + ".csv");
+                string filePath = Server.MapPath(fileName);
                 
                 FileInfo Files = new FileInfo(filePath);
                 ExcelPackage excel = new ExcelPackage(Files);
-                var sheetCreate = excel.Workbook.Worksheets.Add("RaceData");
+                
+                
+
+                var sheetCreate = excel.Workbook.Worksheets.Add("RaceData" + DateTime.Now.ToString("MM_dd_yyyy_hh_mm_ss"));
                 for(int i = 0; i < dtNew.Columns.Count; i++)
                 {
                     sheetCreate.Cells[1, i + 1].Value = dtNew.Columns[i].ColumnName.ToString();

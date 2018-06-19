@@ -489,7 +489,9 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateRace.cs" />
-    <Compile Include="Controllers\CreateRacesController.cs" />
+    <Compile Include="..\..\..\Capstone\RaceMaker\RaceMaker\Controllers\CreateRacesController.cs">
+      <Link>Controllers\CreateRacesController.cs</Link>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="..\..\..\Capstone\RaceMaker\RaceMaker\Models\RaceCoursePoint.cs">

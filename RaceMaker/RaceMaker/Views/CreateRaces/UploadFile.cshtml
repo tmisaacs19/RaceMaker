@@ -3,31 +3,41 @@
     ViewBag.Title = "UploadFile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Upload File</h2>
-
-@using (Html.BeginForm("UploadFile", "CreateRaces", "UploadFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-
-    <div>
-        @Html.TextBox("file", "", new { type = "file" }) <br />
-
-        <input type="submit" value="Upload" />
-
-        @ViewBag.Message
-
+<div class="container-fluid body-content" align='center'>
+    <div style="padding-bottom: 10px">
+        <h2>Upload File</h2>
     </div>
-}
-<p>
+    </div>
+<div class="container-fluid body-content" float='left'>
+    @using (Html.BeginForm("UploadFile", "CreateRaces", "UploadFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
 
-</p>
+        <div style="padding-bottom: 10px">
+            @Html.TextBox("file", "", new { type = "file" }) <br />
 
-@Html.ActionLink("Back to List", "Index") |
-@Html.ActionLink("Back to Race Details", "Details", new { id = Model.ID})
+            <input type="submit" value="Upload" />
+
+            @ViewBag.Message
+        </div>
+
+        <div class="container-fluid body-content" align='center'>
+
+            <img src="~/Images/runnerStart.jpg" alt="RaceImage" />
+
+        </div>
+    }
+</div>
+
+    <p>
+
+    </p>
+<div class="container-fluid body-content" align='center'>
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Back to Race Details", "Details", new { id = Model.ID })
+</div>
 
 
 
 
- 
-  
+
 

@@ -12,8 +12,6 @@ namespace RaceMaker.Models
         [Key]
         public int ID { get; set; }
 
-        
-
         [Required]
         [Display(Name = "Race Name")]
         public string RaceName { get; set; }
