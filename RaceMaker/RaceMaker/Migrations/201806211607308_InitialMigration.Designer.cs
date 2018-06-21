@@ -7,13 +7,13 @@ namespace RaceMaker.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddedRCPPropertyToCreateRaceModel : IMigrationMetadata
+    public sealed partial class InitialMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedRCPPropertyToCreateRaceModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804161931099_AddedRCPPropertyToCreateRaceModel"; }
+            get { return "201806211607308_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source

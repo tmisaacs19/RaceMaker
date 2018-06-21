@@ -10,7 +10,6 @@ namespace RaceMaker.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "RaceMaker.Models.ApplicationDbContext";
         }
 
         protected override void Seed(RaceMaker.Models.ApplicationDbContext context)
