@@ -262,12 +262,8 @@
     <Compile Include="Controllers\CreateRacesController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="..\..\..\Capstone\RaceMaker\RaceMaker\Models\RaceCoursePoint.cs">
-      <Link>Models\RaceCoursePoint.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\Capstone\RaceMaker\RaceMaker\Models\RaceSignUp.cs">
-      <Link>Models\RaceSignUp.cs</Link>
-    </Compile>
+    <Compile Include="Models\RaceCoursePoint.cs" />
+    <Compile Include="Models\RaceSignUp.cs" />
     <Compile Include="Models\RaceSignUpCreateRace.cs" />
     <Compile Include="Models\SendEmailWithAttachment.cs" />
     <Compile Include="Models\User.cs" />
